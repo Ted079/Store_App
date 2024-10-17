@@ -1,0 +1,30 @@
+.section {
+  width: 1274px;
+  h2 {
+    margin: 20px;
+  }
+
+  .list {
+    display: flex;
+    justify-content: space-between;
+    // gap: 5px;
+    .item {
+      min-width: 210px;
+      min-height: 230px;
+      margin: 20px;
+      .image {
+        width: 100%;
+        min-height: 230px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+      h3 {
+        color: var(--grey);
+        font-weight: 600;
+        margin-top: 10px;
+        text-align: center;
+      }
+    }
+  }
+}
