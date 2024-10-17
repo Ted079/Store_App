@@ -1,0 +1,36 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  margin-top: 20px;
+
+
+  .logo {
+    width: 60px;
+  }
+
+  .rights {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 12px;
+    color: var(--dark-sea);
+    a {
+      color: var(--violet);
+    }
+  }
+
+  .socials {
+    display: flex;
+    gap: 15px;
+
+    svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--dark-sea);
+      &:hover {
+        stroke: var(--violet);
+      }
+    }
+  }
+}

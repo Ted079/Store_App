@@ -1,0 +1,51 @@
+.sidebar {
+  width: 304px;
+  height: 423px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  font-family: Montserrat, Roboto, sans-serif;
+  
+  .title {
+    font-weight: 600px;
+    line-height: 20px;
+  }
+  .menu {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .categories {
+      color: var(--dark-sea);
+      font-size: 14px;
+      line-height: 17px;
+      text-transform: capitalize;
+      &:hover {
+        color: var(--white);
+      }
+      &.active {
+        color: var(--violet);
+      }
+    }
+  }
+
+  .footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    .link {
+      color: var(--dark-sea);
+      font-size: 12px;
+      line-height: 17px;
+      text-transform: capitalize;
+      &:hover {
+        color: var(--white);
+      }
+      &.active {
+        color: var(--violet);
+      }
+      
+    }
+  }
+}
