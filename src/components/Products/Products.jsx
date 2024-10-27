@@ -7,8 +7,7 @@ const Products = ({ title, style = {}, products = [], amount }) => {
   const list = [];
   for (let i = 0; i < amount && i < products.length; i++) {
     list.push(products[i]);
-  }
-
+  };
 
   return (
     <section className={styles.products} style={style}>

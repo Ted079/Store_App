@@ -1,0 +1,72 @@
+.banner {
+  width: 1274px;
+  display: flex;
+  height: 570px;
+  justify-content: space-between;
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 90px;
+    gap: 20px;
+    position: relative;
+    &::before {
+      content: "";
+      display: block;
+      width: 204px;
+      height: 170px;
+      background: url("../../images/shoe.png") no-repeat, center;
+      position: absolute;
+      bottom: -20px;
+      right:  300px;
+    }
+    &::after {
+      content: "";
+      display: block;
+      width: 270px;
+      height: 151px;
+      background: url("../../images/devices.png") no-repeat, center;
+      position: absolute;
+      bottom: -110px;
+      left:  281px;
+    }
+
+    p {
+      font-size: 70px;
+      color: var(--violet-dark);
+      font-weight: 300;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      line-height: 80px;
+
+      span {
+        font-size: 150px;
+        line-height: 190px;
+      }
+    }
+  }
+  .right {
+    width: 637px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transition: 0.5s ease-in-out;
+    position: relative;
+    overflow: hidden;
+
+    .discount {
+      color: var(--bg);
+      font-weight: 500;
+      position: absolute;
+      bottom: 10px;
+      left: 270px;
+
+      span {
+        font-weight: 700;
+        color: var(--violet-dark);
+      }
+    }
+  }
+}

@@ -1,15 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import categoriesReducer from "./categories/categoriesSlice";
 import productsReducer from "./products/productsSlice";
+import { apiSlice } from "./api/apiSlice";
 
 export const store = configureStore({
   reducer: {
     categories: categoriesReducer,
     products: productsReducer,
-    // middleware: (getDefaultMiddleware) =>
-    //   getDefaultMiddleware({
-    //     serializableCheck: false, // Отключает проверку сериализуемости
-    //   }),
+    [apiSlice.reducerPath]: apiSlice.reducer,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),
+
   devTools: true,
 });
