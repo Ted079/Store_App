@@ -3,4 +3,6 @@ export const ROUTES = {
     CART: "/cart",
     PRODUCT: "/products/:id",
     CATEGORY: "/categories/:id",
+    NOTFOUND: "/notFound",
+    TERMS: "/terms",
 };

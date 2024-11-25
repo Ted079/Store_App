@@ -1,0 +1,135 @@
+.product {
+  width: 950px;
+  display: flex;
+
+  .images {
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+    .currentImg {
+      width: 375px;
+      height: 375px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      border-radius: 10px;
+    }
+
+    .image-list {
+      width: 90px;
+      height: 375px;
+      .image {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 6px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        border-radius: 10px;
+        opacity: 0.5;
+        cursor: pointer;
+        &.active{
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-right: 80px;
+
+    .title {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 22px;
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 25px;
+      // margin-bottom: 10px;
+
+    }
+
+    .color {
+      font-size: 14px;
+      line-height: 17px;
+      // margin-bottom: 10px;
+
+      span{
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--dark-sea);
+      }
+    }
+
+    .sizes { 
+      display: flex;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      // margin-bottom: 10px;
+      .size {
+        background-color: var(--bg);
+        border-radius: 8px;
+        padding: 6px;
+        position: relative;
+        bottom: 5px;
+        cursor: pointer;
+        &:hover {
+          background-color: var(--violet-dark);
+        }
+        &.active {
+          background-color: var(--violet-dark);
+        }
+      }
+      span{
+        color: var(--dark-sea);
+      }
+    }
+
+    .description {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 15px;
+      color: var(--grey);
+    }
+
+    .actions {
+      margin-top: 10px ; 
+      
+      .basket{
+        margin-right: 10px;
+        &:disabled{
+          cursor: not-allowed;
+          background-color: var(--bg);
+        }
+      }
+      .favorite{
+        background-color: var(--dark-sea);
+      }
+    }
+
+    position: relative;
+    
+    .footer {
+      font-size: 10px;
+      font-weight: 500;
+      display: flex;
+      position: absolute;
+      bottom:  25px;
+      gap: 200px;
+
+      .purchase{
+        color: var(--dark-sea);
+      }
+
+    }
+    
+  }
+}

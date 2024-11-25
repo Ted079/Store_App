@@ -1,10 +1,11 @@
 import React from "react";
 import styles from "./Sidebar.module.scss";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Sidebar = () => {
   const list = useSelector((state) => state.categories.list);
+  const location = useLocation();
 
   return (
     <section className={styles.sidebar}>
@@ -26,17 +27,25 @@ const Sidebar = () => {
         </ul>
       </nav>
       <div className={styles.footer}>
-        <a href={"/help"} target="a_blank" className={styles.link}>
+        <a
+          href={"/help"}
+          target="a_blank"
+          className={`${styles.link} ${
+            location.pathname === "/help" ? styles.active : ""
+          }`}
+        >
           Help
         </a>
-        <a
-          href={"/terms"}
+        <NavLink
+          to={"/terms"}
           target="a_blank"
-          className={styles.link}
+          className={({ isActive }) =>
+            `${styles.link} ${isActive ? styles.active : ""}`
+          }
           style={{ textDecoration: "underline" }}
         >
           Terms and Condition
-        </a>
+        </NavLink>
       </div>
     </section>
   );

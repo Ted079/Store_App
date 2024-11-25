@@ -12,9 +12,6 @@ const Home = () => {
   const categoriesList = useSelector((state) => state.categories.list);
   const filteredProducts = useSelector(state => state.products.filtered);
 
-
-  // console.log(filteredProducts);
-  
   
   useEffect(() => {
     if(!categoriesList.length) return;
