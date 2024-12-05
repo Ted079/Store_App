@@ -1,5 +1,5 @@
 .poster {
-  max-width: 950px;
+  width: 950px;
   height: 423px;
   // display: flex;
   text-transform: uppercase;
@@ -23,7 +23,7 @@
         line-height: 20px;
         margin-top: 20px;
       }
-      
+
       .head {
         font-weight: 700;
         font-size: 42px;
@@ -38,12 +38,10 @@
     }
 
     .image {
-        position: relative;
-        top: -270px;
-        right: -400px;
-        width: 462px;
+      position: relative;
+      top: -270px;
+      right: -400px;
+      width: 462px;
     }
-
-
   }
 }
