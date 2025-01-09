@@ -1,4 +1,4 @@
-import { createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 // export const getProducts = createAsyncThunk(
 //     "products/getProducts",
@@ -17,49 +17,50 @@ const userSlice = createSlice({
   name: "user",
   initialState: {
     cart: [],
+    favorite: [],
     currentUser: [],
     isLoading: false,
   },
 
-  // reducers: {
-  //   addItemToCart: (state, action) => {
-  //     let newCart = [...state.cart];
-  //     const existingItem = state.cart.find(
-  //       ({ id }) => id === action.payload.id
-  //     );
+  reducers: {
+    addItemToCart: (state, { payload }) => {
+      const exsistingItem = state.cart.find(({ id }) => id === payload.id);
 
-  //     if (existingItem) {
-  //       newCart = newCart.map((item) => {
-  //         return item.id === action.payload.id
-  //           ? {
-  //               ...item,
-  //               quantity: action.payload.quantity || item.quantity + 1,
-  //             }
-  //           : item;
-  //       });
-  //     } else newCart.push({ ...action.payload, quantity: 1 });
+      if (!exsistingItem) {
+        state.cart.push({ ...payload, quantity: 1 });
+      } else {
+        exsistingItem.quantity = payload.quantity || exsistingItem.quantity + 1;
+        console.log(exsistingItem.quantity);
+      }
+    },
 
-  //     state.cart = newCart;
-  //   },
-  // },
+    addItemToFavorite: (state, { payload }) => {
+      const exsistingItem = state.favorite.find(({ id }) => id === payload.id);
+      if (!exsistingItem) {
+        state.favorite.push({
+          ...payload,
+          quantity: 1,
+        });
+      } else {
+        exsistingItem.quantity = payload.quantity || exsistingItem.quantity + 1;
+      }
+    },
+  },
 
-  // extraReducers: (builder) => {
-  //     builder.addCase(getProducts.pending, (state) => {
-  //       state.isLoading = true;
-  //     });
-
-  //     builder.addCase(getProducts.fulfilled, (state, action) => {
-  //       state.list = action.payload;
-
-  //       state.isLoading = false;
-  //     });
-
-  //     builder.addCase(getProducts.rejected, (state) => {
-  //       state.isLoading = false;
-  //     });
-  //   },
+  extraReducers: (builder) => {
+    // builder.addCase(getProducts.pending, (state) => {
+    //   state.isLoading = true;
+    // });
+    // builder.addCase(getProducts.fulfilled, (state, action) => {
+    //   state.list = action.payload;
+    //   state.isLoading = false;
+    // });
+    // builder.addCase(getProducts.rejected, (state) => {
+    //   state.isLoading = false;
+    // });
+  },
 });
 
-export const {addItemToCart} = userSlice.actions;
+export const { addItemToCart, addItemToFavorite } = userSlice.actions;
 
 export default userSlice.reducer;

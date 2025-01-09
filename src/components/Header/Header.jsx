@@ -15,13 +15,13 @@ const Header = () => {
       </div>
 
       <div className={styles.info}>
-        <div className={styles.user}>
+        <Link to={ROUTES.SIGNUP} className={styles.user}>
           <div
             className={styles.avatar}
             style={{ backgroundImage: `url(${AVATAR})` }}
           ></div>
           <div className={styles.username}>Guest</div>
-        </div>
+        </Link>
 
         <form className={styles.form}>
           

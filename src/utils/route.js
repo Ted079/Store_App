@@ -5,4 +5,6 @@ export const ROUTES = {
     CATEGORY: "/categories/:id",
     NOTFOUND: "/notFound",
     TERMS: "/terms",
+    SIGNUP: "/signup",
+    LOGIN: "/login",
 };

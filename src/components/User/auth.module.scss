@@ -1,0 +1,37 @@
+.container {
+  margin: 50px auto;
+
+  .wrapper {
+    width: 320px;
+    background-color: var(--dark);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    .logo {
+      // width: 304px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .form {
+      .group {
+        input {
+          width: 272px;
+          height: 40px;
+          background-color: var(--bg);
+          font-weight: 400;
+          font-size: 13px;
+          padding: 10px;
+          margin-bottom: 30px;
+          border-radius: 4px;
+        }
+      }
+
+      .err {
+        color: red;
+        padding: 20px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

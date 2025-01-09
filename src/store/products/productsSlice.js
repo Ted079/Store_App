@@ -30,8 +30,8 @@ const productsSlice = createSlice({
     },
 
     relatedProducts: (state, { payload }) => {
-      const items = state.list.filter(({ category: { id } }) => id === payload);
-      state.related = shuffle(items);
+      const item = state.list.filter(({ category: { id } }) => id === payload);
+      state.related = shuffle(item);
     },
   },
   extraReducers: (builder) => {
