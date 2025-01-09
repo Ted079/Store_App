@@ -29,16 +29,6 @@ const categoriesSlice = createSlice({
 
     builder.addCase(getCategories.fulfilled, (state, action) => {
       state.list = action.payload;
-      // state.list = action.payload.filter((catergoryName) => {
-      //   [
-      //     "Clothes",
-      //     "Books",
-      //     "Electronics",
-      //     "Shoes",
-      //     "Product",
-      //     "Sport",
-      //   ].includes(catergoryName.name);
-
       state.isLoading = false;
     });
 

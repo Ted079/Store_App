@@ -4,6 +4,7 @@ import bannerImg from "../../images/banner.png";
 
 const Banner = ({ imageList = [], amount }) => {
   const [currentImage, setCurrentImage] = useState(0);
+ 
   const list = [];
   for (let i = 0; i < imageList.length && i < amount; i++) {
     list.push(imageList[i]);
