@@ -14,7 +14,6 @@ const Header = () => {
 
   const noLayoutRoutes = [ROUTES.PROFILE];
   const hideLayouts =  noLayoutRoutes.includes(location.pathname);
-  console.log(hideLayouts);
 
   useEffect(() => {
     if (!currentUser) return;

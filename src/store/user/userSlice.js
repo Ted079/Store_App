@@ -38,7 +38,7 @@ export const loginUser = createAsyncThunk(
 );
 
 export const fetchUserProfile = createAsyncThunk(
-  "users, fetchUserProfile",
+  "users/fetchUserProfile",
   async (_, thunkAPI) => {
     try {
       const token = localStorage.getItem("token");
@@ -60,7 +60,7 @@ export const fetchUserProfile = createAsyncThunk(
 );
 
 export const updateUser = createAsyncThunk(
-  "users,updateUser",
+  "users/updateUser",
   async (payload, thunkAPI) => {
     try {
       const response = await axios.put(
