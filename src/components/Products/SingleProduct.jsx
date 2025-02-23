@@ -15,7 +15,6 @@ const SingleProduct = () => {
   const { list, related } = useSelector(({ products }) => products);
   const { data, isLoading, isSuccess, isFetching } = useGetProductQuery({ id });
   console.log(data?.category?.id);
-  console.log(related);
 
   useEffect(() => {
     if (!isLoading && !isSuccess && !isFetching) {

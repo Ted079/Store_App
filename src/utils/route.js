@@ -7,4 +7,6 @@ export const ROUTES = {
     TERMS: "/terms",
     SIGNUP: "/signup",
     LOGIN: "/login",
+    PROFILE: "/profile",
+    SETTINGS: "/profile/settings",
 };

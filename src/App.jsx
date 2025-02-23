@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "./store/categories/categoriesSlice";
 
 import Header from "./components/Header/Header";
@@ -9,14 +9,25 @@ import Footer from "./components/Footer/Footer";
 import { getProducts } from "./store/products/productsSlice";
 import { useLocation } from "react-router-dom";
 import { ROUTES } from "./utils/route";
+import { fetchUserProfile } from "./store/user/userSlice";
 
 function App() {
   const dispatch = useDispatch();
   const location = useLocation();
+  const token = useSelector((state) => state.user.token);
 
   const noLayoutRoutes = [ROUTES.LOGIN, ROUTES.SIGNUP];
 
+  const isLoginProfile = location.pathname === ROUTES.PROFILE;
+
   const hideLayout = noLayoutRoutes.includes(location.pathname);
+  
+
+  useEffect(() => {
+    if (token) {
+      dispatch(fetchUserProfile());
+    }
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(getCategories());
@@ -27,11 +38,13 @@ function App() {
     <div className="app">
       {!hideLayout && <Header />}
       <div className="container">
-        {!hideLayout && <Sidebar />}
+        {!hideLayout && (
+          <Sidebar type={isLoginProfile ? "profile" : "categories"} />
+        )}
         <AppRoutes />
       </div>
 
-       <Footer />
+      <Footer />
     </div>
   );
 }

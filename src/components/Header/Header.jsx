@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ROUTES } from "../../utils/route";
 import LOGO from "../../images/logo.svg";
-import AVATAR from "../../images/avatar.jpg";
+import AVATAR from "../../images/monkey.svg";
+import { useDispatch, useSelector } from "react-redux";
 
 const Header = () => {
+  const { currentUser } = useSelector(({ user }) => user);
+  const [values, setValues] = useState({ name: "quest", avatar: `${AVATAR}` });
+  const dispatch = useDispatch();
+  const location = useLocation();
+
+  const noLayoutRoutes = [ROUTES.PROFILE];
+  const hideLayouts =  noLayoutRoutes.includes(location.pathname);
+  console.log(hideLayouts);
+
+  useEffect(() => {
+    if (!currentUser) return;
+
+    setValues(currentUser);
+  }, [currentUser, dispatch]);
+
   return (
     <div className={styles.header}>
       <div className={styles.logo}>
@@ -15,16 +31,20 @@ const Header = () => {
       </div>
 
       <div className={styles.info}>
-        <Link to={ROUTES.SIGNUP} className={styles.user}>
-          <div
-            className={styles.avatar}
-            style={{ backgroundImage: `url(${AVATAR})` }}
-          ></div>
-          <div className={styles.username}>Guest</div>
-        </Link>
+        {!hideLayouts && (
+          <Link
+            to={!currentUser ? ROUTES.LOGIN : ROUTES.PROFILE}
+            className={styles.user}
+          >
+            <div
+              className={styles.avatar}
+              style={{ backgroundImage: `url(${values.avatar})` }}
+            ></div>
+            <div className={styles.username}>{values.name}</div>
+          </Link>
+        )}
 
         <form className={styles.form}>
-          
           <div className={styles.icon}>
             <svg className="icon">
               <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#search`} />

@@ -7,7 +7,6 @@ const Categories = ({ title, amount, categories = [] }) => {
   for (let i = 0; i < amount && i < categories.length; i++) {
     list.push(categories[i]);
   }
-  console.log(list);
 
   return (
     <section className={styles.section}>

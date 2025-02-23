@@ -1,5 +1,6 @@
 .container {
   margin: 50px auto;
+  height: 70vh;
 
   .wrapper {
     width: 320px;
@@ -12,9 +13,12 @@
       text-align: center;
       margin-bottom: 30px;
     }
-
+    
     .form {
       .group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
         input {
           width: 272px;
           height: 40px;
@@ -22,15 +26,38 @@
           font-weight: 400;
           font-size: 13px;
           padding: 10px;
-          margin-bottom: 30px;
           border-radius: 4px;
+          // margin-bottom: 30px;
         }
-      }
+        .err {
+          margin-top: 10px;
+          color: #eb404e;
+          font-size: 12px;
+          font-weight: 100;
+          padding-left: 5px;
+          // line-height: 15px;
+        }
 
-      .err {
-        color: red;
-        padding: 20px;
-        margin-bottom: 10px;
+        button {
+          width: 100%;
+          font-weight: 400;
+        }
+
+        .msg {
+          color: var(--dark-sea);
+          font-size: 12px;
+          line-height: 17px;
+          text-align: center;
+          margin-top: 10px;
+          .link {
+            text-decoration: underline;
+            color: var(--dark-sea);
+            font-size: 12px;
+            &:hover {
+              color: var(--white);
+            }
+          }
+        }
       }
     }
   }
