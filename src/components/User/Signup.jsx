@@ -6,12 +6,16 @@ import { ROUTES } from "../../utils/route";
 import { useDispatch } from "react-redux";
 import { checkEmail, createUser } from "../../store/user/userSlice";
 import UserForm from "./UserForm";
+import { useCreateUserApiMutation } from "../../store/api/auth.api";
 
 function Signup() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [mutateNewUser] = useCreateUserApiMutation();
+
   const handleSignup = (values) => {
+    // mutateNewUser(values);
     dispatch(createUser(values));
     navigate("/");
   };

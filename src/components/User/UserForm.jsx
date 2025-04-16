@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { updateUser } from "../../store/user/userSlice";
-import { ROUTES } from "../../utils/route";
-import LOGO from "../../images/logo.svg";
-import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { validateValues } from "../../utils/common";
 
-
-function UserForm({ updateUserHandler, buttonText, redirectLink, styles, logo }) {
+function UserForm({
+  updateUserHandler,
+  buttonText,
+  redirectLink,
+  styles,
+  logo,
+  title,
+  back,
+}) {
   const { currentUser } = useSelector(({ user }) => user);
   const [values, setValues] = useState({
     name: "",
@@ -26,7 +30,6 @@ function UserForm({ updateUserHandler, buttonText, redirectLink, styles, logo })
     if (!currentUser) return;
     setValues(currentUser);
   }, [currentUser]); // ---
-
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -58,11 +61,16 @@ function UserForm({ updateUserHandler, buttonText, redirectLink, styles, logo })
   return (
     <section className={styles.container}>
       <div className={styles.wrapper}>
+        <span className={styles.back}>{back}</span>
+        <h1>{title}</h1>
+
         <div className={styles.logo}>
-          <img src={LOGO} alt="Stuff" />
+          <img src={logo} alt="Stuff" />
         </div>
+
         <form className={styles.form} onSubmit={handleSubmit} noValidate>
           <div className={styles.group}>
+            <label htmlFor="email">Username</label>
             <input
               type="name"
               name="name"
@@ -75,6 +83,7 @@ function UserForm({ updateUserHandler, buttonText, redirectLink, styles, logo })
             />
             {error ? <p className={styles.err}>{error.name}</p> : null}
 
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               name="email"
@@ -87,6 +96,7 @@ function UserForm({ updateUserHandler, buttonText, redirectLink, styles, logo })
             />
             {error && <p className={styles.err}>{error.email}</p>}
 
+            <label htmlFor="email">Password</label>
             <input
               type="password"
               name="password"

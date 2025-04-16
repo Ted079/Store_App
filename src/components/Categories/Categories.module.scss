@@ -1,5 +1,6 @@
 .section {
-  width: 1274px;
+  max-width: 1274px;
+  width: 100%;
   h2 {
     margin: 20px;
   }
@@ -7,12 +8,14 @@
   .list {
     display: flex;
     justify-content: space-between;
-    // gap: 5px;
     .item {
       min-width: 210px;
+      width: calc(20% - 20px);
+
       min-height: 230px;
       margin: 20px;
       .image {
+        max-width: 210px;
         width: 100%;
         min-height: 230px;
         background-repeat: no-repeat;

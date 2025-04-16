@@ -1,45 +1,49 @@
 import React from "react";
 import styles from "./Sidebar.module.scss";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { ROUTES } from "../../utils/route";
+import { isAction } from "@reduxjs/toolkit";
 
-const Sidebar = ({ type = "categories" }) => {
-  const list = useSelector((state) => state.categories.list);
-  const { currentUser } = useSelector(({ user }) => user);
-
+const Sidebar = ({ list = [], title }) => {
   const location = useLocation();
+  const isCategories = title === "CATEGORIES";
 
   return (
     <section className={styles.sidebar}>
-      <span className={styles.title}>
-        {type === "categories" ? "CATEGORIES" : "PROFILE"}
-      </span>
+      <span className={styles.title}>{title}</span>
+
       <nav>
         <ul className={styles.menu}>
-          {type === "categories" ? (
-            list.slice(0, 7).map(({ id, name }) => (
-              <li key={id}>
-                <NavLink
-                  className={({ isActive }) =>
-                    `${styles.categories} ${isActive ? styles.active : ""}`
-                  }
-                  to={`/categories/${id}`}
-                >
-                  {name}
-                </NavLink>
-              </li>
-            ))
-          ) : !currentUser ? (
-            <section className="preloader">...Loading</section>
-          ) : (
-            <>
-              <li>{currentUser.avatar}</li>
-              <li>{currentUser.name}</li>
-              <li>{currentUser.email}</li>
-            </>
-          )}
+          {isCategories
+            ? list.slice(0, 9).map(({ id, name }) => (
+                <li key={id}>
+                  <NavLink
+                    to={`/categories/${id}`}
+                    className={({ isActive }) =>
+                      `${styles.categories} ${isActive ? styles.active : ""}`
+                    }
+                  >
+                    {name}
+                  </NavLink>
+                </li>
+              ))
+            : list.map(({ id, to, label }) => (
+                <li key={id}>
+                  <NavLink
+                    to={to}
+                    className={({ isActive }) =>
+                      `${styles.categories} ${isActive ? styles.active : ""} 
+                      ${id === 1 ? styles.underline : ""}`
+                    }
+                  >
+                    {label}
+                  </NavLink>
+                </li>
+              ))}
         </ul>
       </nav>
+
       <div className={styles.footer}>
         <a
           href={"/help"}

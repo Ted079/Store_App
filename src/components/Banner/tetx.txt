@@ -1,0 +1,98 @@
+<Swiper
+        className={styles.right}
+        spaceBetween={10}
+        centeredSlides={true}
+        // autoplay={{
+        //   delay: 2500,
+        //   disableOnInteraction: false,
+        // }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
+      >
+
+        {list.map(({images}) => (
+
+        <SwiperSlide >
+          <div
+            className={styles.img}
+            style={{ backgroundImage: `url(${images[0]})` }}
+          >
+            <p className={styles.discount}>
+              save up to <span>50%</span> off
+            </p>
+          </div>
+        </SwiperSlide>
+        ))}
+      </Swiper>
+
+==============
+
+
+      import React, { useState, useEffect } from "react";
+import styles from "./Banner.module.scss";
+import bannerImg from "../../images/banner.png";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import "swiper/css";
+
+const Banner = ({ imageList = [], amount = 0 }) => {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  const list = [];
+  for (let i = 0; i < imageList.length && i < amount; i++) {
+    list.push(imageList[i]);
+  }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prevImage) => (prevImage + 1) % list.length);
+    }, 8000);
+
+    return () => clearInterval(interval);
+  }, [list.length]);
+
+  if (!list.length) return <div>ooops!</div>;
+
+  return (
+    <section className={styles.banner}>
+      <div className={styles.left}>
+        <p className={styles.content}>
+          NEW YEAR
+          <span>SALE</span>
+        </p>
+        <button className={styles.more}>See more</button>
+      </div>
+
+      {/* <Swiper
+        spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
+        className="mySwiper"
+      >
+        <SwiperSlide> */}
+          <div
+            className={styles.right}
+            style={{ backgroundImage: `url(${list[currentImage].images[0]})` }}
+          >
+            <p className={styles.discount}>
+              save up to <span>50%</span> off
+            </p>
+          </div>
+        {/* </SwiperSlide>
+      </Swiper> */}
+    </section>
+  );
+};
+
+export default Banner;

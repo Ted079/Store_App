@@ -1,11 +1,12 @@
 .sidebar {
-  width: 304px;
+  max-width: 304px;
+  width: 100%;
   height: 423px;
   padding: 25px;
   display: flex;
   flex-direction: column;
   font-family: Montserrat, Roboto, sans-serif;
-  
+
   .title {
     font-weight: 600px;
     line-height: 20px;
@@ -15,12 +16,18 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+    
+    .underline {
+      text-decoration: underline;
+    }
 
     .categories {
       color: var(--dark-sea);
       font-size: 14px;
       line-height: 17px;
       text-transform: capitalize;
+
+
       &:hover {
         color: var(--white);
       }
@@ -45,7 +52,6 @@
       &.active {
         color: var(--violet);
       }
-      
     }
   }
 }

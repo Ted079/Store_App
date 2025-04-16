@@ -61,7 +61,7 @@ body {
   }
 
   .app {
-    width: 1300px;
+    max-width: 1300px;
     margin: 0 auto;
   }
 
@@ -87,6 +87,7 @@ body {
 
   section {
     background: $dark;
+    // background: white;
     border-radius: 6px;
   }
 

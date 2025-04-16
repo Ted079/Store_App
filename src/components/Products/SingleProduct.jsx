@@ -6,6 +6,7 @@ import { ROUTES } from "../../utils/route";
 import { useDispatch, useSelector } from "react-redux";
 import { relatedProducts } from "../../store/products/productsSlice";
 import Products from "./Products";
+import Sidebar from "../Sidebar/Sidebar";
 
 const SingleProduct = () => {
   const dispatch = useDispatch();
@@ -13,6 +14,8 @@ const SingleProduct = () => {
   const navigate = useNavigate();
 
   const { list, related } = useSelector(({ products }) => products);
+  const categoriesList = useSelector((state) => state.categories.list);
+
   const { data, isLoading, isSuccess, isFetching } = useGetProductQuery({ id });
   console.log(data?.category?.id);
 
@@ -31,6 +34,7 @@ const SingleProduct = () => {
     <section className="preloader">...Loading</section>
   ) : (
     <>
+      <Sidebar title="CATEGORIES" list={categoriesList} />
       <Product {...data} />
       <Products products={related} amount={5} title="Related Products" />
     </>

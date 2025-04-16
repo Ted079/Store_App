@@ -38,9 +38,9 @@ function App() {
     <div className="app">
       {!hideLayout && <Header />}
       <div className="container">
-        {!hideLayout && (
+        {/* {!hideLayout && (
           <Sidebar type={isLoginProfile ? "profile" : "categories"} />
-        )}
+        )} */}
         <AppRoutes />
       </div>
 

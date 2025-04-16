@@ -5,8 +5,9 @@
   justify-content: space-between;
 
   .left {
+    width: 450px;
     display: flex;
-    flex-direction: column;
+    // flex-direction: column;
     align-items: center;
     margin: 90px;
     gap: 20px;
@@ -19,7 +20,7 @@
       background: url("../../images/shoe.png") no-repeat, center;
       position: absolute;
       bottom: -20px;
-      right:  300px;
+      right: 300px;
     }
     &::after {
       content: "";
@@ -29,7 +30,7 @@
       background: url("../../images/devices.png") no-repeat, center;
       position: absolute;
       bottom: -110px;
-      left:  281px;
+      left: 281px;
     }
 
     p {
@@ -49,12 +50,36 @@
   }
   .right {
     width: 637px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    transition: 0.5s ease-in-out;
-    position: relative;
-    overflow: hidden;
+    :global {
+      .swiper-pagination {
+        bottom: 17px;
+        left: 220px;
+        text-align: center;
+      }
+
+      .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+        display: inline-flex;
+        background-color: transparent;
+        border: 1px solid #eee;
+        color: #eee;
+        transition: all 0.3s ease;
+        opacity: 0.5;
+      }
+
+      .swiper-pagination-bullet-active {
+        background-color: var(--violet-dark);
+        background-color: #eee;
+        // opacity: 1;
+      }
+    }
+
+    .img {
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
 
     .discount {
       color: var(--bg);

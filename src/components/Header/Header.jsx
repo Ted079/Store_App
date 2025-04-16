@@ -1,19 +1,51 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { ROUTES } from "../../utils/route";
 import LOGO from "../../images/logo.svg";
 import AVATAR from "../../images/monkey.svg";
 import { useDispatch, useSelector } from "react-redux";
+import { useGetProductWithFilterQuery } from "../../store/api/apiSlice";
+import { logOutUser, toggleForm } from "../../store/user/userSlice";
+import { UseEscapeKey } from "../../hooks/UseEscapeKey";
 
 const Header = () => {
-  const { currentUser } = useSelector(({ user }) => user);
+  const { currentUser, showSearchForm, cart, favorite } = useSelector(({ user }) => user);
   const [values, setValues] = useState({ name: "quest", avatar: `${AVATAR}` });
+  const [searchValue, setSearchValue] = useState("");
+  const [profileMenu, setProfileMenu] = useState(false);
   const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
 
-  const noLayoutRoutes = [ROUTES.PROFILE];
-  const hideLayouts =  noLayoutRoutes.includes(location.pathname);
+  const noLayoutRoutes = [ROUTES.PROFILE, ROUTES.SETTINGS];
+  const hideLayouts = noLayoutRoutes.includes(location.pathname);
+
+  const { data, isLoading } = useGetProductWithFilterQuery({
+    title: searchValue,
+  });
+
+  const handleSeacrh = (e) => {
+    setSearchValue(e.target.value);
+  };
+
+  const toggleClick = () => {
+    setProfileMenu((previous) => !previous);
+  };
+
+  const openModal = () => {
+    dispatch(toggleForm(true));
+  };
+
+  const closeModal = () => {
+    setSearchValue("");
+    dispatch(toggleForm(false));
+  };
+
+  UseEscapeKey(() => {
+    dispatch(toggleForm(false));
+    // dispatch(setProfileMenu(false));
+  });
 
   useEffect(() => {
     if (!currentUser) return;
@@ -30,18 +62,43 @@ const Header = () => {
       </div>
 
       <div className={styles.info}>
-        {!hideLayouts && (
-          <Link
-            to={!currentUser ? ROUTES.LOGIN : ROUTES.PROFILE}
-            className={styles.user}
-          >
-            <div
-              className={styles.avatar}
-              style={{ backgroundImage: `url(${values.avatar})` }}
-            ></div>
-            <div className={styles.username}>{values.name}</div>
-          </Link>
-        )}
+        <div className={styles.user} onClick={toggleClick}>
+          {!hideLayouts && (
+            <Link
+              // to={!currentUser ? ROUTES.LOGIN : ROUTES.PROFILE}
+              to={!currentUser ? ROUTES.LOGIN : "#"}
+              className={styles.userLink}
+            >
+              <div
+                className={styles.avatar}
+                style={{ backgroundImage: `url(${values.avatar})` }}
+              />
+              <div className={styles.username}>{values.name}</div>
+            </Link>
+          )}
+          {profileMenu && currentUser && (
+            <div className={styles.userMenu}>
+              <ul>
+                {[
+                  { to: ROUTES.PROFILE, label: "Profile" },
+                  { to: ROUTES.SETTINGS, label: "Settings" },
+                ].map(({ to, label }) => (
+                  <li key={to}>
+                    <Link to={to}>{label}</Link>
+                  </li>
+                ))}
+                <li
+                  onClick={() => {
+                    dispatch(logOutUser());
+                    navigate(0);
+                  }}
+                >
+                  log Out
+                </li>
+              </ul>
+            </div>
+          )}
+        </div>
 
         <form className={styles.form}>
           <div className={styles.icon}>
@@ -50,17 +107,49 @@ const Header = () => {
             </svg>
           </div>
 
-          <div className={styles.input}>
+          <div className={styles.input} onClick={openModal}>
             <input
               type="search"
               autoComplete="off"
               placeholder="Search.."
               name="search"
-              onChange={() => {}}
-              value=""
+              onChange={handleSeacrh}
+              value={searchValue}
             />
           </div>
-          {false && <div className={styles.box}></div>}
+
+          {showSearchForm ? (
+            <>
+              <div
+                className={styles.backdrop}
+                onClick={() => {
+                  dispatch(toggleForm(false));
+                }}
+              />
+              <div className={styles.box}>
+                {isLoading
+                  ? "..Loading"
+                  : !data.length
+                  ? "No results"
+                  : data.map(({ images, id, title }) => (
+                      <Link
+                        className={styles.item}
+                        onClick={closeModal}
+                        to={`/products/${id}`}
+                        key={id}
+                      >
+                        <div
+                          className={styles.image}
+                          style={{ backgroundImage: `url(${images[0]})` }}
+                        />
+                        <div className={styles.title}>{title}</div>
+                      </Link>
+                    ))}
+              </div>
+            </>
+          ) : (
+            <></> // вынести в отдельный компонент
+          )}
         </form>
 
         <div className={styles.account}>
@@ -68,12 +157,17 @@ const Header = () => {
             <svg className={styles["icon-fav"]}>
               <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#heart`} />
             </svg>
+            {!!favorite.length && (
+              <span className={styles.count}>{favorite.length}</span>
+            )}
           </Link>
           <Link to={ROUTES.CART} className={styles.cart}>
             <svg className={styles["icon-cart"]}>
               <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#bag`} />
             </svg>
-            <span className={styles.count}>2</span>
+            {!!cart.length && (
+              <span className={styles.count}>{cart.length}</span>
+            )}
           </Link>
         </div>
       </div>

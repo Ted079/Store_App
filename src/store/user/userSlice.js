@@ -99,9 +99,11 @@ const userSlice = createSlice({
     currentUser: null,
     loginErr: null,
     token: localStorage.getItem("token") || null,
-    cart: [],
-    favorite: [],
+    cart: JSON.parse(localStorage.getItem("cart")) || [],
+    favorite: JSON.parse(localStorage.getItem("favorite")) ||[],
     isLoading: false,
+    showSearchForm: false,
+    showProfilMene: false,
   },
 
   reducers: {
@@ -110,6 +112,10 @@ const userSlice = createSlice({
       state.token = null;
       state.loginErr = null;
       localStorage.removeItem("token");
+    },
+
+    toggleForm: (state, { payload }) => {
+      state.showSearchForm = payload;
     },
 
     addItemToCart: (state, { payload }) => {
@@ -121,6 +127,12 @@ const userSlice = createSlice({
         exsistingItem.quantity = payload.quantity || exsistingItem.quantity + 1;
         console.log(exsistingItem.quantity);
       }
+      localStorage.setItem("cart", JSON.stringify(state.cart));
+    },
+
+    removeItemToCart: (state, { payload }) => {
+      state.cart = state.cart.filter(({ id }) => id !== payload);
+      localStorage.removeItem("cart");
     },
 
     addItemToFavorite: (state, { payload }) => {
@@ -133,7 +145,13 @@ const userSlice = createSlice({
       } else {
         exsistingItem.quantity = payload.quantity || exsistingItem.quantity + 1;
       }
+      localStorage.setItem("favorite", JSON.stringify(state.favorite));
     },
+  },
+
+  removeItemToFavorite: (state, { payload }) => {
+    state.cart = state.cart.filter(({ id }) => id !== payload);
+    localStorage.removeItem("favorite");
   },
 
   extraReducers: (builder) => {
@@ -173,7 +191,12 @@ const userSlice = createSlice({
   },
 });
 
-export const { addItemToCart, addItemToFavorite, logOutUser } =
-  userSlice.actions;
+export const {
+  addItemToCart,
+  addItemToFavorite,
+  logOutUser,
+  toggleForm,
+  removeItemToCart,
+} = userSlice.actions;
 
 export default userSlice.reducer;

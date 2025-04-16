@@ -1,0 +1,50 @@
+<svg width="0" height="0" class="hidden">
+    <symbol fill="inherit" id="edits" viewBox="0 0 24.00 24.00" xmlns="http://www.w3.org/2000/svg"
+        stroke-width="0.00024000000000000003">
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M20.8477 1.87868C19.6761 0.707109 17.7766 0.707105 16.605 1.87868L2.44744 16.0363C2.02864 16.4551 1.74317 16.9885 1.62702 17.5692L1.03995 20.5046C0.760062 21.904 1.9939 23.1379 3.39334 22.858L6.32868 22.2709C6.90945 22.1548 7.44285 21.8693 7.86165 21.4505L22.0192 7.29289C23.1908 6.12132 23.1908 4.22183 22.0192 3.05025L20.8477 1.87868ZM18.0192 3.29289C18.4098 2.90237 19.0429 2.90237 19.4335 3.29289L20.605 4.46447C20.9956 4.85499 20.9956 5.48815 20.605 5.87868L17.9334 8.55027L15.3477 5.96448L18.0192 3.29289ZM13.9334 7.3787L3.86165 17.4505C3.72205 17.5901 3.6269 17.7679 3.58818 17.9615L3.00111 20.8968L5.93645 20.3097C6.13004 20.271 6.30784 20.1759 6.44744 20.0363L16.5192 9.96448L13.9334 7.3787Z"
+            ></path>
+        </g>
+    </symbol>
+
+
+    <symbol
+        id="card"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g
+            id="SVGRepo_tracerCarrier"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        ></g>
+        <g id="SVGRepo_iconCarrier">
+            <path
+                d="M3 8C3 6.34315 4.34315 5 6 5H18C19.6569 5 21 6.34315 21 8V16C21 17.6569 19.6569 19 18 19H6C4.34315 19 3 17.6569 3 16V8Z"
+                stroke-width="2"
+            ></path>
+            <path d="M3 10H21" stroke="#000000" stroke-width="2"></path>
+            <path
+                d="M14 15L17 15"
+                stroke-width="2"
+                stroke-linecap="round"
+            ></path>
+        </g>
+    </symbol>
+
+    <symbol viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg" id="close">
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M19.207 6.207a1 1 0 0 0-1.414-1.414L12 10.586 6.207 4.793a1 1 0 0 0-1.414 1.414L10.586 12l-5.793 5.793a1 1 0 1 0 1.414 1.414L12 13.414l5.793 5.793a1 1 0 0 0 1.414-1.414L13.414 12l5.793-5.793z"
+                fill="#000000"></path>
+        </g>
+    </symbol>
+
+
+</svg>
