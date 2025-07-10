@@ -1,11 +1,13 @@
 .header {
+  position: relative;
   display: flex;
+  max-width: 1275px;
   width: 100%;
   align-items: center;
   padding: 25px 20px;
-  // background-color: var(--dark);
-  // border-radius: 5px;
-  // margin-bottom: 10px;
+
+  border-radius: 5px;
+  margin-bottom: 15px;
 
   .logo {
     width: 304px;
@@ -17,52 +19,9 @@
     justify-content: space-between;
     flex-grow: 1;
 
-    .user {
-      position: relative;
-
-      .userLink {
-        display: flex;
-        align-items: center;
-        column-gap: 10px;
-        cursor: pointer;
-
-        .avatar {
-          width: 36px;
-          height: 36px;
-          border-radius: 50%;
-          background-color: var(--dark);
-          background-repeat: no-repeat;
-          background-position: center;
-          background-size: cover;
-        }
-
-        .username {
-          font-size: 10px;
-          line-height: 12px;
-          color: var(--grey);
-        }
-      }
-      .userMenu {
-        z-index: 50;
-        top: 120%;
-        left: 0;
-        padding: 12px;
-        display: flex;
-        position: absolute;
-        border-radius: 4px;
-        background-color: var(--dark-sea);
-        row-gap: 8px;
-        flex-direction: column;
-        max-height: 300px;
-        overflow: auto;
-        &::-webkit-scrollbar {
-          display: none;
-        }
-      }
-    }
-
     .form {
-      width: 300px;
+      max-width: 300px;
+      width: 100%;
       height: 27px;
       display: flex;
       background-color: var(--dark);
@@ -221,6 +180,58 @@
         color: var(-ligth);
         text-align: center;
         line-height: 16px;
+      }
+
+      .user {
+        position: relative;
+
+        .userLink {
+          display: flex;
+          align-items: center;
+          column-gap: 10px;
+          cursor: pointer;
+
+          svg {
+            stroke: var(--grey);
+            &:hover {
+              stroke: var(--white);
+            }
+          }
+
+          .avatar {
+            background-color: var(--violet);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--dark);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+          }
+
+          .username {
+            font-size: 10px;
+            line-height: 12px;
+            color: var(--grey);
+          }
+        }
+        .userMenu {
+          z-index: 50;
+          top: 120%;
+          left: 0;
+          padding: 12px;
+          display: flex;
+          position: absolute;
+          border-radius: 4px;
+          background-color: var(--dark-sea);
+          row-gap: 8px;
+          flex-direction: column;
+          max-height: 300px;
+          overflow: auto;
+          &::-webkit-scrollbar {
+            display: none;
+          }
+        }
       }
     }
   }

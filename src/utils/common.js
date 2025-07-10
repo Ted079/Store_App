@@ -32,14 +32,16 @@ export const urlParams = (url, params) => {
 
 export const sumBy = (arr) => arr.reduce((prev, curr) => prev + curr, 0);
 
-// const addItemTo = (state, payload) => {
-//   const exsistingItem = state.cart.find(({ id }) => id === payload.id);
+export function formatDate(dateStr, locale = "en-US", options = {}) {
+  if (!dateStr) return "";
 
-//   if (!exsistingItem) {
-//     state.cart.push({ ...payload, quantity: 1 });
-//   } else {
-//     exsistingItem.quantity = payload.quantity || exsistingItem.quantity + 1;
-//     console.log(exsistingItem.quantity);
-//   }
-//   localStorage.setItem("cart", JSON.stringify(state.cart));
-// };
+  const date = new Date(dateStr);
+  if (isNaN(date)) return "";
+
+  return date.toLocaleDateString(locale, {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    ...options,
+  });
+}

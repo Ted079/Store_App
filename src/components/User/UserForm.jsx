@@ -11,25 +11,19 @@ function UserForm({
   logo,
   title,
   back,
+  initialState,
+  initialErrorState,
+  showExtraFields = false,
 }) {
   const { currentUser } = useSelector(({ user }) => user);
-  const [values, setValues] = useState({
-    name: "",
-    email: "",
-    password: "",
-    avatar: "https://picsum.photos/800",
-  });
-
-  const [error, setError] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
+  const [values, setValues] = useState(initialState);
+  const [error, setError] = useState(initialErrorState);
+  const hasName = "name" in values;
 
   useEffect(() => {
     if (!currentUser) return;
     setValues(currentUser);
-  }, [currentUser]); // ---
+  }, [currentUser]);
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -55,7 +49,11 @@ function UserForm({
 
     if (Object.values(newError).some((err) => err)) return;
 
-    updateUserHandler(values);
+    const { phone, birthday, ...dataToSubmit } = values;
+    updateUserHandler(dataToSubmit);
+
+    const extraFields = { phone, birthday };
+    localStorage.setItem("extraUserData", JSON.stringify(extraFields));
   };
 
   return (
@@ -70,18 +68,22 @@ function UserForm({
 
         <form className={styles.form} onSubmit={handleSubmit} noValidate>
           <div className={styles.group}>
-            <label htmlFor="email">Username</label>
-            <input
-              type="name"
-              name="name"
-              placeholder="Your name"
-              value={values.name}
-              autoComplete="off"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              required
-            />
-            {error ? <p className={styles.err}>{error.name}</p> : null}
+            {hasName && (
+              <>
+                <label htmlFor="email">Username</label>
+                <input
+                  type="name"
+                  name="name"
+                  placeholder="Your name"
+                  value={values.name}
+                  autoComplete="off"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  required
+                />
+                {error ? <p className={styles.err}>{error.name}</p> : null}
+              </>
+            )}
 
             <label htmlFor="email">Email</label>
             <input
@@ -109,11 +111,37 @@ function UserForm({
             />
             {error && <p className={styles.err}>{error.password}</p>}
 
+            {showExtraFields && (
+              <>
+                <label htmlFor="phone">Phone Number</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Your phone number"
+                  value={values.number}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {error && <p className={styles.err}>{error.phone}</p>}
+
+                <label htmlFor="birthday">Birthday</label>
+                <input
+                  type="date"
+                  lang="en"
+                  name="birthday"
+                  value={values.birthday}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {error && <p className={styles.err}>{error.birthday}</p>}
+              </>
+            )}
+
             <button>{buttonText}</button>
             {redirectLink && (
               <div className={styles.msg}>
                 <Link className={styles.link} to={redirectLink.path}>
-                  Sign in
+                  {redirectLink.title}
                 </Link>{" "}
                 {redirectLink.text}
               </div>

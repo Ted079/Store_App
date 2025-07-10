@@ -15,8 +15,6 @@ const Banner = ({ imageList = [], amount = 0 }) => {
     list.push(imageList[i]);
   }
 
-  console.log(list);
-
   // useEffect(() => {
   //   const interval = setInterval(() => {
   //     setCurrentImage((prevImage) => (prevImage + 1) % list.length);
@@ -49,8 +47,7 @@ const Banner = ({ imageList = [], amount = 0 }) => {
         pagination={{
           clickable: true,
         }}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
+        modules={[Autoplay, Pagination]}
       >
         {list.map(({ images, id }) => (
           <Link to={`/products/${id}`} key={id}>

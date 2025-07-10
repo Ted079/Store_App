@@ -1,93 +1,130 @@
 .container {
   max-width: 950px;
   width: 100%;
+  padding: 1.5rem;
 
   .wrapper {
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin: 15px;
+    flex-direction: column;
+    gap: 1.5rem;
+
     .user {
-      width: 500px;
-      height: 130px;
-      border-radius: 5px;
-      background-color: var(--generic);
       display: flex;
+      gap: 1.5rem;
+      background-color: var(--generic);
+      padding: 1.5rem;
+      border-radius: 10px;
+      width: 100%;
+      height: 205px;
       justify-content: space-between;
-      padding: 20px;
 
-      .info {
-        display: flex;
-        flex-direction: column;
-        .name {
-          font-size: 36px;
-          font-weight: 600;
+      .left {
+        .profileInfo {
+          gap: 1.5rem;
+          display: flex;
+          align-items: center;
           margin-bottom: 20px;
-          color: var(--violet);
-          color: #ffc862;
-          color: (255, 200, 98);
-        }
 
-        .email {
-          // font-size: 22px;
-          // font-weight: 600;
+          .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: var(--dark);
+            background-size: cover;
+            background-position: center;
+          }
+
+          .details {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            .name {
+              font-size: 34px;
+              font-weight: 600;
+              color: var(--violet);
+            }
+            .role {
+              font-size: 14px;
+              color: var(--grey-dark);
+            }
+          }
+        }
+        .location {
+          font-size: 14px;
+          color: var(--grey);
+          margin-left: 140px;
+        }
+      }
+
+      .rigth {
+        display: flex;
+        align-items: center;
+        margin-right: 50px;
+
+        .extraInfo {
+          flex-direction: column;
+          display: flex;
+
+          span {
+            margin-bottom: 10px;
+            .label {
+              font-size: 14px;
+              font-weight: 600;
+              color: var(--white);
+            }
+            .value {
+              font-size: 14px;
+              color: var(--grey);
+            }
+          }
         }
       }
     }
 
-    .avatar {
-      width: 104px;
-      height: 104px;
-      position: relative;
-      bottom: 7px;
-      background-color: var(--dark);
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-      border-radius: 50%;
-    }
-  }
+    .actions {
+      display: flex;
+      gap: 1rem;
 
-  .edit,
-  .cart {
-    width: 150px;
-    height: 130px;
-    border-radius: 5px;
-    background-color: var(--generic);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    color: var(--grey);
-    font-size: 15px;
-    &:hover {
-      background-color: var(--dark-sea);
-    }
-    .icon {
-      width: 30px;
-      height: 30px;
-      fill: var(--grey);
-      stroke: var(--grey);
-    }
-  }
-  // button {
-  //   width: ;
-  // }
+      .card {
+        width: 150px;
+        height: 140px;
+        background-color: var(--generic);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 14px;
+        color: var(--grey);
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+        transition: background-color 0.3s ease;
 
-  .cart {
-    width: 345px;
+        &:hover {
+          background-color: var(--dark-sea);
+        }
 
-    .cart-icon,
-    .fav-icon {
-      width: 50px;
-      height: 50px;
-      fill: var(--grey);
-      // stroke: var(--grey);
-    }
-    .fav-icon {
-      fill: none;
-      stroke: var(--grey);
+        .icon {
+          width: 32px;
+          height: 32px;
+          fill: var(--grey);
+          stroke: var(--grey);
+        }
+
+        .heart {
+          fill: none;
+        }
+      }
+
+      .logOutBtn {
+        @extend .card;
+        background-color: var(--violet-dark);
+        color: var(--white);
+        .icon{
+          fill: var(--grey);
+          stroke: var(--white);
+        }
+      }
     }
   }
 }

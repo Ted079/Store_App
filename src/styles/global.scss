@@ -6,6 +6,7 @@ $font-family: Montserrat, Roboto, sans-serif;
 
 body {
   background: $bg;
+  // background: #2a2a2a;
   font-size: 16px;
   line-height: 16px;
   font-family: $font-family;
@@ -62,6 +63,7 @@ body {
 
   .app {
     max-width: 1300px;
+    width: 100%;
     margin: 0 auto;
   }
 

@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { BASE_URL } from "../../utils/constants";
+import { shuffle } from "../../utils/common";
 
 export const createUser = createAsyncThunk(
   "users/createUser",
@@ -27,7 +28,7 @@ export const loginUser = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       });
-      localStorage.setItem("token", token);
+      localStorage.setItem("token", token); //local token
 
       return loginResponse.data;
     } catch (error) {
@@ -41,7 +42,7 @@ export const fetchUserProfile = createAsyncThunk(
   "users/fetchUserProfile",
   async (_, thunkAPI) => {
     try {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("token"); //local token
       if (!token) return thunkAPI.rejectWithValue("No token!!");
 
       const response = await axios(`${BASE_URL}/auth/profile`, {
@@ -53,7 +54,7 @@ export const fetchUserProfile = createAsyncThunk(
       return response.data;
     } catch (error) {
       console.log(error);
-      localStorage.removeItem("token");
+      localStorage.removeItem("token"); //local
       return thunkAPI.rejectWithValue(error);
     }
   }
@@ -98,9 +99,12 @@ const userSlice = createSlice({
   initialState: {
     currentUser: null,
     loginErr: null,
-    token: localStorage.getItem("token") || null,
-    cart: JSON.parse(localStorage.getItem("cart")) || [],
-    favorite: JSON.parse(localStorage.getItem("favorite")) ||[],
+    token: localStorage.getItem("token") || null, //local token
+    // cart: JSON.parse(localStorage.getItem("cart")) || [], //local cart
+    // favorite: JSON.parse(localStorage.getItem("fav")) || [], //local fav
+    cart: [],
+    favorite: [],
+    cartRelatedItems: [],
     isLoading: false,
     showSearchForm: false,
     showProfilMene: false,
@@ -108,14 +112,27 @@ const userSlice = createSlice({
 
   reducers: {
     logOutUser: (state) => {
+      const userId = state.currentUser?.id;
       state.currentUser = null;
-      state.token = null;
       state.loginErr = null;
+
+      state.favorite = [];
+      state.cart = [];
+      state.token = null;
       localStorage.removeItem("token");
+      // if (userId) {
+      //   localStorage.removeItem(`cart_${userId}`);
+      //   localStorage.removeItem(`fav_${userId}`);
+      // }
     },
 
     toggleForm: (state, { payload }) => {
       state.showSearchForm = payload;
+    },
+
+    relatedCartProducts: (state, { payload }) => {
+      const items = state.cart.filter(({ category: { id } }) => id === payload);
+      state.cartRelatedItems = shuffle(items);
     },
 
     addItemToCart: (state, { payload }) => {
@@ -125,14 +142,20 @@ const userSlice = createSlice({
         state.cart.push({ ...payload, quantity: 1 });
       } else {
         exsistingItem.quantity = payload.quantity || exsistingItem.quantity + 1;
-        console.log(exsistingItem.quantity);
       }
-      localStorage.setItem("cart", JSON.stringify(state.cart));
+
+      const userId = state.currentUser?.id;
+      if (userId) {
+        localStorage.setItem(`cart_${userId}`, JSON.stringify(state.cart));
+      }
     },
 
     removeItemToCart: (state, { payload }) => {
       state.cart = state.cart.filter(({ id }) => id !== payload);
-      localStorage.removeItem("cart");
+      const userId = state.currentUser?.id;
+      if (userId) {
+        localStorage.setItem(`cart_${userId}`, JSON.stringify(state.cart)); // local cart
+      }
     },
 
     addItemToFavorite: (state, { payload }) => {
@@ -140,18 +163,21 @@ const userSlice = createSlice({
       if (!exsistingItem) {
         state.favorite.push({
           ...payload,
-          quantity: 1,
         });
-      } else {
-        exsistingItem.quantity = payload.quantity || exsistingItem.quantity + 1;
       }
-      localStorage.setItem("favorite", JSON.stringify(state.favorite));
+      const userId = state.currentUser?.id;
+      if (userId) {
+        localStorage.setItem(`fav_${userId}`, JSON.stringify(state.favorite));
+      }
     },
-  },
 
-  removeItemToFavorite: (state, { payload }) => {
-    state.cart = state.cart.filter(({ id }) => id !== payload);
-    localStorage.removeItem("favorite");
+    removeItemToFavorite: (state, { payload }) => {
+      state.favorite = state.favorite.filter(({ id }) => id !== payload);
+      const userId = state.currentUser?.id;
+      if (userId) {
+        localStorage.setItem(`fav_${userId}`, JSON.stringify(state.favorite)); // local cart
+      }
+    },
   },
 
   extraReducers: (builder) => {
@@ -162,7 +188,14 @@ const userSlice = createSlice({
     builder.addCase(loginUser.fulfilled, (state, action) => {
       state.currentUser = action.payload;
       state.loginErr = null;
-      state.token = localStorage.getItem("token");
+
+      state.token = localStorage.getItem("token"); //local token
+
+      const userId = action.payload.id;
+      const storedCart = localStorage.getItem(`cart_${userId}`); //local cart
+      state.cart = storedCart ? JSON.parse(storedCart) : [];
+      const storedFav = localStorage.getItem(`fav_${userId}`); //local fav
+      state.favorite = storedFav ? JSON.parse(storedFav) : [];
     });
 
     builder.addCase(loginUser.rejected, (state, action) => {
@@ -176,13 +209,25 @@ const userSlice = createSlice({
     builder.addCase(fetchUserProfile.fulfilled, (state, action) => {
       state.currentUser = action.payload;
       state.isLoading = false;
+
+      const userId = action.payload.id;
+      const storedCart = localStorage.getItem(`cart_${userId}`);
+      state.cart = storedCart ? JSON.parse(storedCart) : [];
+      const storedFav = localStorage.getItem(`fav_${userId}`);
+      state.favorite = storedFav ? JSON.parse(storedFav) : [];
     });
 
     builder.addCase(fetchUserProfile.rejected, (state) => {
+      const userId = state.currentUser?.id;
       state.currentUser = null;
       state.token = null;
       state.isLoading = false;
-      localStorage.removeItem("token");
+      if (userId) {
+        localStorage.removeItem(`cart_${userId}`);
+        localStorage.removeItem(`fav_${userId}`);
+      }
+      state.cart = [];
+      state.favorite = [];
     });
 
     builder.addCase(updateUser.fulfilled, (state, action) => {
@@ -197,6 +242,8 @@ export const {
   logOutUser,
   toggleForm,
   removeItemToCart,
+  removeItemToFavorite,
+  relatedCartProducts,
 } = userSlice.actions;
 
 export default userSlice.reducer;

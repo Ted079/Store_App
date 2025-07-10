@@ -46,13 +46,6 @@ function Category() {
   useEffect(() => {
     if (!id || !list.length) return;
     const category = list.find((item) => item.id === Number(id)); //+, id * 1, Number(id)
-
-    // const upperedName = "",
-    // for(let i = 0; i < name.length; i++) {
-    //   upperedName += name[i];
-    // }
-    // console.log(upperedName);
-
     setCatories(category);
   }, [id, list]);
 
@@ -129,6 +122,7 @@ function Category() {
           style={{ padding: 0 }}
           title=""
           amount={items.length}
+          isSlider={false}
         />
       )}
 

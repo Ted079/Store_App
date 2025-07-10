@@ -5,13 +5,35 @@ import { updateUser } from "../../store/user/userSlice";
 import UserForm from "./UserForm";
 import Banner from "../Banner/Banner";
 import { ROUTES } from "../../utils/route";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function UpdateUserData() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const initialValue = {
+    name: "",
+    email: "",
+    password: "",
+    avatar: "https://picsum.photos/800",
+    phone: "",
+    birthday: "",
+  };
+
+  const initialErrorValue = {
+    name: "",
+    email: "",
+    password: "",
+  };
 
   const handleSubmit = (values) => {
     dispatch(updateUser(values));
+    navigate(ROUTES.PROFILE);
+    toast.success("Profile updated successfully!", {
+      position: "bottom-left",
+      // theme: "dark",
+    });
   };
 
   const back = (
@@ -26,11 +48,14 @@ function UpdateUserData() {
     <>
       <section className={styles.container}>
         <UserForm
+          initialState={initialValue}
+          initialErrorState={initialErrorValue}
           back={back}
           title="Edit Profile"
           styles={styles}
           updateUserHandler={handleSubmit}
           buttonText="Update Data"
+          showExtraFields={true}
         />
       </section>
     </>

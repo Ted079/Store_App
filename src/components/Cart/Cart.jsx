@@ -3,40 +3,65 @@ import styles from "./Cart.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import Products from "../Products/Products";
 import { sumBy } from "../../utils/common";
-import { addItemToCart, removeItemToCart } from "../../store/user/userSlice";
-import { Link } from "react-router-dom";
+import {
+  addItemToCart,
+  relatedCartProducts,
+  removeItemToCart,
+} from "../../store/user/userSlice";
+import { Link, useNavigate } from "react-router-dom";
+import { ROUTES } from "../../utils/route";
+import { toast } from "react-toastify";
 
 function Cart() {
   const { cart } = useSelector(({ user }) => user);
   const productsList = useSelector((state) => state.products.list);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-  const cutTitle = (str) => {
-    const word = str.trim().split(" ");
-    return word.slice(1, 3).join(" ");
-  };
-
   const changeQuantity = (item, quantity) => {
     dispatch(addItemToCart({ ...item, quantity }));
+    // toast("Quantity has been changed", {
+    //   position: "bottom-left",
+    //   theme: "dark",
+    // });
   };
 
   const removeItem = (id) => {
     dispatch(removeItemToCart(id));
+    toast.warning("Item removed from cart", {
+      position: "bottom-left",
+      theme: "dark",
+    });
   };
 
   return (
     <>
-      <section className={styles.container}>
-        {!cart.length ? (
-          <div className={styles.empty}>
-            Your Cart is empty
-            <Products products={productsList} amount={10} title="Reconmended" />
-          </div>
-        ) : (
+      {!cart.length ? (
+        <>
+          <section className={styles.container}>
+            <div className={styles.empty}>
+              <div className={styles.redirect}>
+                <h2>
+                  You don't have any items in your cart. Let's get shopping!
+                </h2>
+                <button onClick={() => navigate(ROUTES.HOME)}>
+                  Start Shopping
+                </button>
+              </div>
+              <Products
+                products={productsList}
+                amount={10}
+                title="Reconmended You"
+              />
+            </div>
+          </section>
+        </>
+      ) : (
+        <div className={styles.container}>
           <div className={styles.wrapper}>
             <div className={styles.cart}>
               <h2 className={styles.title}>Your Cart</h2>
@@ -93,9 +118,9 @@ function Cart() {
                         className={styles.close}
                         onClick={() => removeItem(id)}
                       >
-                        <svg className="icon">
+                        <svg className={styles.icon}>
                           <use
-                            xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#plus`}
+                            xlinkHref={`${process.env.PUBLIC_URL}/newSprite.svg#close`}
                           />
                         </svg>
                       </div>
@@ -127,9 +152,17 @@ function Cart() {
               <button className={styles.proceed}>Go to Checkout</button>
             </div>
           </div>
-        )}
-      </section>
-      <Products products={productsList} amount={10} title="Reconmended" />
+
+          <div className={styles.productsWrapper}>
+            <Products
+              style={{ marginTop: "0px" }}
+              products={productsList}
+              amount={10}
+              title="Reconmended"
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 }

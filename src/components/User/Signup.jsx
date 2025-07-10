@@ -14,6 +14,19 @@ function Signup() {
 
   const [mutateNewUser] = useCreateUserApiMutation();
 
+  const initialValue = {
+    name: "",
+    email: "",
+    password: "",
+    avatar: "https://picsum.photos/800",
+  };
+
+   const initiaErrorlValue = {
+    name: "",
+    email: "",
+    password: "",
+  };
+
   const handleSignup = (values) => {
     // mutateNewUser(values);
     dispatch(createUser(values));
@@ -23,6 +36,8 @@ function Signup() {
   return (
     <>
       <UserForm
+        initialState={initialValue}
+        initialErrorState={initiaErrorlValue}
         logo={LOGO}
         styles={styles}
         updateUserHandler={handleSignup}
@@ -30,6 +45,7 @@ function Signup() {
         redirectLink={{
           path: ROUTES.LOGIN,
           text: "if you already have an account",
+          title: "Log in"
         }}
       />
     </>

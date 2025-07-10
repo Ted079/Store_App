@@ -5,11 +5,12 @@ import { ROUTES } from "../../utils/route";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addItemToCart, addItemToFavorite } from "../../store/user/userSlice";
+import { toast } from "react-toastify";
 
 const SIZES = [4.5, 5, 5.5];
 
 const Product = (item) => {
-  const {images, description, title, price } = item;
+  const { images, description, title, price } = item;
 
   const [currentImage, setCurrentImage] = useState();
   const [currentSize, setCurrentSize] = useState();
@@ -21,16 +22,20 @@ const Product = (item) => {
     setCurrentImage(images[0]);
   }, [images]);
 
-
   const addToCart = () => {
     dispatch(addItemToCart(item));
+    toast.success("Item added to cart", {
+      position: "bottom-left",
+    });
   };
 
   const addToFavorite = () => {
     dispatch(addItemToFavorite(item));
+    toast("Item added to your favorites", {
+      position: "bottom-left",
+      theme:"dark",
+    });
   };
-
-  
 
   return (
     <section className={styles.product}>
@@ -77,10 +82,16 @@ const Product = (item) => {
         </div>
         <p className={styles.description}>{description}</p>
         <div className={styles.actions}>
-          <button onClick={addToCart}   className={styles.basket} disabled={!currentSize}>
+          <button
+            onClick={addToCart}
+            className={styles.basket}
+            disabled={!currentSize}
+          >
             Add to cart
           </button>
-          <button className={styles.favorite} onClick={addToFavorite}>Add to favorites</button>
+          <button className={styles.favorite} onClick={addToFavorite}>
+            Add to favorites
+          </button>
         </div>
         <div className={styles.footer}>
           <div className={styles.purchase}>

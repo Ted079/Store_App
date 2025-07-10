@@ -10,8 +10,14 @@ import { logOutUser, toggleForm } from "../../store/user/userSlice";
 import { UseEscapeKey } from "../../hooks/UseEscapeKey";
 
 const Header = () => {
-  const { currentUser, showSearchForm, cart, favorite } = useSelector(({ user }) => user);
-  const [values, setValues] = useState({ name: "quest", avatar: `${AVATAR}` });
+  const { currentUser, showSearchForm, cart, favorite } = useSelector(
+    ({ user }) => user
+  );
+
+  const [values, setValues] = useState({
+    name: "quest",
+    avatar: `${AVATAR}`,
+  });
   const [searchValue, setSearchValue] = useState("");
   const [profileMenu, setProfileMenu] = useState(false);
   const dispatch = useDispatch();
@@ -62,44 +68,6 @@ const Header = () => {
       </div>
 
       <div className={styles.info}>
-        <div className={styles.user} onClick={toggleClick}>
-          {!hideLayouts && (
-            <Link
-              // to={!currentUser ? ROUTES.LOGIN : ROUTES.PROFILE}
-              to={!currentUser ? ROUTES.LOGIN : "#"}
-              className={styles.userLink}
-            >
-              <div
-                className={styles.avatar}
-                style={{ backgroundImage: `url(${values.avatar})` }}
-              />
-              <div className={styles.username}>{values.name}</div>
-            </Link>
-          )}
-          {profileMenu && currentUser && (
-            <div className={styles.userMenu}>
-              <ul>
-                {[
-                  { to: ROUTES.PROFILE, label: "Profile" },
-                  { to: ROUTES.SETTINGS, label: "Settings" },
-                ].map(({ to, label }) => (
-                  <li key={to}>
-                    <Link to={to}>{label}</Link>
-                  </li>
-                ))}
-                <li
-                  onClick={() => {
-                    dispatch(logOutUser());
-                    navigate(0);
-                  }}
-                >
-                  log Out
-                </li>
-              </ul>
-            </div>
-          )}
-        </div>
-
         <form className={styles.form}>
           <div className={styles.icon}>
             <svg className="icon">
@@ -153,7 +121,7 @@ const Header = () => {
         </form>
 
         <div className={styles.account}>
-          <Link to={ROUTES.HOME} className={styles.favourites}>
+          <Link to={ROUTES.PROFILE} className={styles.favourites}>
             <svg className={styles["icon-fav"]}>
               <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#heart`} />
             </svg>
@@ -169,6 +137,62 @@ const Header = () => {
               <span className={styles.count}>{cart.length}</span>
             )}
           </Link>
+
+          <div className={styles.user} onClick={toggleClick}>
+            {!hideLayouts && (
+              <Link
+                to={!currentUser ? ROUTES.LOGIN : "#"}
+                className={styles.userLink}
+              >
+                {!currentUser ? (
+                  <div className={styles.acc}>
+                    <svg
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      id="account"
+                    >
+                      <path
+                        d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z"
+                        // stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                ) : (
+                  <div
+                    className={styles.avatar}
+                    style={{ backgroundImage: `url(${values.avatar})` }}
+                  />
+                )}
+                {/* <div className={styles.username}>{values.name}</div> */}
+              </Link>
+            )}
+            {profileMenu && currentUser && (
+              <div className={styles.userMenu}>
+                <ul>
+                  {[
+                    { to: ROUTES.PROFILE, label: "Profile" },
+                    { to: ROUTES.SETTINGS, label: "Settings" },
+                  ].map(({ to, label }) => (
+                    <li key={to}>
+                      <Link to={to}>{label}</Link>
+                    </li>
+                  ))}
+                  <li
+                    onClick={() => {
+                      dispatch(logOutUser());
+                      navigate(ROUTES.LOGIN);
+                    }}
+                  >
+                    log Out
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

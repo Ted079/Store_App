@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "./store/categories/categoriesSlice";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import Header from "./components/Header/Header";
 import AppRoutes from "./components/Routes/Routes";
@@ -21,7 +23,6 @@ function App() {
   const isLoginProfile = location.pathname === ROUTES.PROFILE;
 
   const hideLayout = noLayoutRoutes.includes(location.pathname);
-  
 
   useEffect(() => {
     if (token) {
@@ -38,10 +39,8 @@ function App() {
     <div className="app">
       {!hideLayout && <Header />}
       <div className="container">
-        {/* {!hideLayout && (
-          <Sidebar type={isLoginProfile ? "profile" : "categories"} />
-        )} */}
         <AppRoutes />
+        <ToastContainer />
       </div>
 
       <Footer />

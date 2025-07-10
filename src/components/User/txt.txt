@@ -233,3 +233,423 @@ const Sidebar = ({ type = "categories" }) => {
 };
 
 export default Sidebar;
+
+
+
+ <section className={styles.container}>
+        <div className={styles.wrapper}>
+          {/* <div className={styles.grids}> */}
+          <div className={styles.user}>
+            <div className={styles.info}>
+              <p className={styles.name}>{currentUser.name}</p>
+              {/* <p className={styles.name}>{currentUser.id}</p> */}
+              <p className={styles.email}>{currentUser.email}</p>
+              <p>{currentUser.role}</p>
+            </div>
+            <div
+              className={styles.avatar}
+              style={{ backgroundImage: `url(${currentUser.avatar})` }}
+            ></div>
+          </div>
+
+          <Link to={ROUTES.SETTINGS} className={styles.edit}>
+            <svg className={styles.icon}>
+              <use
+                xlinkHref={`${process.env.PUBLIC_URL}/newSprite.svg#edits`}
+              />
+            </svg>
+
+            <span>Edit profile</span>
+          </Link>
+
+          <Link to={ROUTES.HOME} className={styles.edit}>
+            <svg className={styles.icon}>
+              <use xlinkHref={`${process.env.PUBLIC_URL}/newSprite.svg#card`} />
+            </svg>
+            Update card
+          </Link>
+
+          <div className={styles.grids}>
+            <Link to={ROUTES.CART} className={styles.cart}>
+            <svg className={styles["fav-icon"]}>
+                <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#cart`} />
+              </svg>
+              Cart
+            </Link>
+            <Link to={ROUTES.FAVORITE} className={styles.cart}>
+              <svg className={styles["fav-icon"]}>
+                <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#heart`} />
+              </svg>
+              Favorites
+            </Link>
+
+            <Link to={ROUTES.FAVORITE} className={styles.cart}>
+              <svg className={styles["fav-icon"]}>
+                <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#heart`} />
+              </svg>
+              Payment methods
+            </Link>
+
+            <Link to={ROUTES.FAVORITE} className={styles.cart}>
+              <svg className={styles["fav-icon"]}>
+                <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#heart`} />
+              </svg>
+              Return history
+            </Link>
+            <Link to={ROUTES.FAVORITE} className={styles.cart}>
+              <svg className={styles["fav-icon"]}>
+                <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#heart`} />
+              </svg>
+              Purchased items
+            </Link>
+            <Link to={ROUTES.FAVORITE} className={styles.cart}>
+              <svg className={styles["fav-icon"]}>
+                <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#heart`} />
+              </svg>
+              Bonuses
+            </Link>
+
+            <Link to={ROUTES.FAVORITE} className={styles.cart}>
+              <svg className={styles["fav-icon"]}>
+                <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#heart`} />
+              </svg>
+              Payment terms
+            </Link>
+
+            <Link to={ROUTES.FAVORITE} className={styles.cart}>
+              <svg className={styles["fav-icon"]}>
+                <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#heart`} />
+              </svg>
+              Return terms
+            </Link>
+
+            <Link to={ROUTES.FAVORITE} className={styles.cart}>
+              <svg className={styles["fav-icon"]}>
+                <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#heart`} />
+              </svg>
+              Order history
+            </Link>
+            {/* <button
+              onClick={() => {
+                dispatch(logOutUser());
+                navigate("/login");
+              }}
+            >
+              Log Out
+            </button> */}
+          </div>
+        </div>
+      </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ///newww3333
+      import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { logOutUser } from "../../store/user/userSlice";
+import { Link, useNavigate } from "react-router-dom";
+import { ROUTES } from "../../utils/route";
+import styles from "./profile.module.scss";
+import Sidebar from "../Sidebar/Sidebar";
+import Products from "../Products/Products";
+import IMG from "../../images/cart_img_2.jpg";
+
+function Profile() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  // const filteredProducts = useSelector((state) => state.products.filtered);
+  const favorite = useSelector((state) => state.user.favorite);
+
+  const listForProfile = [
+    { id: 1, to: ROUTES.HOME, label: "Back to Store" },
+    { id: 2, to: ROUTES.HOME, label: "Cards" },
+    { id: 3, to: ROUTES.HOME, label: "Messages" },
+    { id: 4, to: ROUTES.HOME, label: "E-Check" },
+    { id: 5, to: ROUTES.HOME, label: "Bonuses" },
+  ];
+
+  const { currentUser, isLoading } = useSelector(({ user }) => user);
+
+  useEffect(() => {
+    if (!isLoading && !currentUser) navigate("/login");
+  }, [currentUser, isLoading]);
+
+  if (isLoading) {
+    return <section className="preloader">...Loading</section>;
+  }
+
+  return !currentUser ? (
+    <section className="preloader">...Loading</section>
+  ) : (
+    <>
+      <Sidebar title="PROFILE" list={listForProfile} />
+
+      <section className={styles.container}>
+        <div className={styles.wrapper}>
+          <div className={styles.header}>
+            <div className={styles.user}>
+              <div
+                className={styles.avatar}
+                style={{ backgroundImage: `url(${currentUser.avatar})` }}
+              />
+              <div className={styles.info}>
+                <p className={styles.name}>{currentUser.name}</p>
+                <p className={styles.email}>{currentUser.email}</p>
+                <p className={styles.role}>{currentUser.role}</p>
+              </div>
+            </div>
+            {/* <div className={styles.actions}> */}
+              <Link to={ROUTES.SETTINGS} className={styles.card}>
+                <svg className={styles.icon}>
+                  <use
+                    xlinkHref={`${process.env.PUBLIC_URL}/newSprite.svg#edits`}
+                  />
+                </svg>
+                <span>Edit</span>
+              </Link>
+              <Link to={ROUTES.HOME} className={styles.card}>
+                <svg className={styles.icon}>
+                  <use
+                    xlinkHref={`${process.env.PUBLIC_URL}/newSprite.svg#card`}
+                  />
+                </svg>
+                <span>Update Card</span>
+              </Link>
+              <button
+                className={styles.card}
+                onClick={() => {
+                  dispatch(logOutUser());
+                  navigate("/login");
+                }}
+              >
+                <svg className={styles.icon}>
+                  <use
+                    xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#bag`}
+                  />
+                </svg>
+                <span>Log Out</span>
+              </button>
+            </div>
+          {/* </div> */}
+
+          <div className={styles["grids-container"]}>
+            <div className={styles.grid1}>
+              <Link to={ROUTES.FAVORITE} className={styles.card}>
+                Payment Methods
+              </Link>
+              <Link to={ROUTES.FAVORITE} className={styles.card}>
+                Return History
+              </Link>
+              <Link to={ROUTES.FAVORITE} className={styles.card}>
+                Purchased Items
+              </Link>
+              <Link to={ROUTES.FAVORITE} className={styles.card}>
+                Bonuses
+              </Link>
+              <Link to={ROUTES.FAVORITE} className={styles.card}>
+                Order History
+              </Link>
+            </div>
+            <div className={styles.grid2}>
+              <Link to={ROUTES.CART} className={styles.card}>
+                <svg className={styles.icon}>
+                  <use
+                    xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#bag`}
+                  />
+                </svg>
+                <span>Cart</span>
+              </Link>
+              <Link to={ROUTES.FAVORITE} className={styles.card}>
+                <svg className={styles.icon}>
+                  <use
+                    xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#heart`}
+                  />
+                </svg>
+                <span>Favorites</span>
+              </Link>
+
+              {/* <Link to={ROUTES.FAVORITE} className={styles.card}>
+                Payment Terms
+              </Link>
+              <Link to={ROUTES.FAVORITE} className={styles.card}>
+                Return Terms
+              </Link> */}
+            </div>
+             </div>
+        </div>
+      </section>
+      {favorite.length ? (
+        <Products products={favorite} amount={6} title="Favorite goods" />
+      ) : (
+        <div> Your cart is empty</div>
+      )}
+    </>
+  );
+}
+
+
+export default Profile;
+
+.container {
+  max-width: 950px;
+  width: 100%;
+  padding: 1rem;
+  background-color: white;
+
+  .wrapper {
+    .header {
+      // display: flex;
+      gap: 2rem;
+      .user {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        background-color: var(--generic);
+        padding: 1.5rem;
+        border-radius: 10px;
+        // flex-grow: 1;
+        width: 430px;
+        height: 150px;
+
+        .avatar {
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          background-color: var(--dark);
+          background-size: cover;
+          background-position: center;
+        }
+
+        .info {
+          display: flex;
+          flex-direction: column;
+
+          .name {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--violet);
+          }
+
+          .email {
+            font-size: 14px;
+            color: var(--grey);
+          }
+
+          .role {
+            font-size: 14px;
+            color: var(--grey-dark);
+          }
+        }
+      }
+
+      // .actions {
+        display: flex;
+        // flex-direction: column;
+        gap: 1rem;
+        // background-color: white;
+
+        .card {
+          width: 150px;
+          height: 140px;
+          background-color: var(--generic);
+          // padding: 1rem;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          font-size: 14px;
+          color: var(--grey);
+          justify-content: center;
+          text-align: center;
+          flex-direction: column;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: var(--dark-sea);
+          }
+
+          .icon {
+            width: 32px;
+            height: 32px;
+            fill: var(--grey);
+            stroke: var(--grey);
+          }
+        }
+      // }
+    }
+
+    .grids-container {
+      display: flex;
+      gap: 1rem;
+
+      .grid1 {
+        max-width: 430px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-top: 1rem;
+
+        // background-color: green;
+   
+        .card {
+          // margin-right: 5px;
+          width: 210px;
+          height: 60px;
+          background-color: var(--generic);
+          padding: 1rem;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          gap: 0.5rem;
+          font-size: 14px;
+          color: var(--grey);
+          text-align: center;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: var(--dark-sea);
+          }
+
+          .icon {
+            width: 32px;
+            height: 32px;
+            fill: var(--grey);
+            stroke: var(--grey);
+          }
+        }
+      }
+
+      .grid2 {
+        @extend .grid1;
+        // width: 100%;
+        flex-direction: column;
+        gap: 10px;
+        // background-color: red;
+        // grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+
+        // border: 2px solid red;
+        
+        .card{
+          // width: 100%;
+          height: 100px;
+        }
+      }
+    }
+  }
+}
+
