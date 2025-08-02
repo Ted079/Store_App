@@ -1,0 +1,116 @@
+.form {
+  margin-left: 90px;
+  max-width: 500px;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  background-color: var(--dark-sea2);
+  background-color: var(--dark);
+  border-radius: 20px;
+  column-gap: 16px;
+  padding: 7px 10px;
+  position: relative;
+  border: 2px solid var(--dark-sea2);
+  border: 2px solid var(--sea);
+  transition: border 0.3s ease, background-color 0.3s ease;
+
+  &:hover {
+    background-color: #33323242;
+    border: 2px solid var(--white);
+    .icon {
+      fill: var(--white);
+    }
+  }
+
+  &.active {
+    background-color: #33323242;
+    border: 2px solid var(--white);
+    .icon {
+      fill: var(--white);
+    }
+  }
+
+  .icon {
+    position: relative;
+    margin-right: 5px;
+    bottom: 1px;
+    left: 5px;
+    width: 24px;
+    height: 24px;
+    fill: var(--grey);
+    transition: fill 0.3s ease;
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .input {
+    flex-grow: 1;
+    padding-bottom: 10px;
+    position: relative;
+    z-index: 20;
+
+    input {
+      font-size: 14px;
+      background-color: none;
+      color: var(--white);
+      outline: none;
+      width: 100%;
+      font-weight: 500;
+      position: relative;
+      top: 3px;
+      &::placeholder {
+        color: var(--grey);
+      }
+    }
+  }
+
+  .box {
+    z-index: 20;
+    top: 120%;
+    left: 0;
+    padding: 12px;
+    display: flex;
+    position: absolute;
+    width: 100%;
+    border-radius: 8px;
+    background-color: var(--dark-sea);
+    row-gap: 8px;
+    flex-direction: column;
+    max-height: 300px;
+    overflow: auto;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease 0.1s;
+
+    &.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .item {
+    display: flex;
+    gap: 15px;
+    opacity: 0.9;
+    align-items: center;
+    &:hover {
+      opacity: 1;
+    }
+    .image {
+      width: 60px;
+      height: 60px;
+      border-radius: 6px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+    .title {
+      font-size: 13px;
+    }
+  }
+}

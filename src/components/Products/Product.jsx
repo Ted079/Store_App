@@ -24,16 +24,16 @@ const Product = (item) => {
 
   const addToCart = () => {
     dispatch(addItemToCart(item));
-    toast.success("Item added to cart", {
+    toast.success(`${title} added to cart`, {
       position: "bottom-left",
     });
   };
 
   const addToFavorite = () => {
     dispatch(addItemToFavorite(item));
-    toast("Item added to your favorites", {
+    toast(`${title} added to your favorites`, {
       position: "bottom-left",
-      theme:"dark",
+      theme: "dark",
     });
   };
 

@@ -1,13 +1,9 @@
-import React, { useEffect } from "react";
+import styles from "./Preloader.module.scss";
 
 function Preloader() {
-  const preloader = <section className="preloader">...Loading</section>;
-//   useEffect(() => {
-//     setTimeout(() => {
-//       preloader;
-//     }, 2000);
-//   }, [setTimeout]);
-  return <div>Preloader</div>;
+  return <div className={styles.wrapper}>
+      <div className={styles.spinner}/>
+    </div>
 }
 
 export default Preloader;

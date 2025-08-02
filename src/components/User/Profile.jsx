@@ -2,12 +2,13 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logOutUser } from "../../store/user/userSlice";
 import { Link, useNavigate } from "react-router-dom";
-import { ROUTES } from "../../utils/route";
-import styles from "./profile.module.scss";
+import styles from "./Profile.module.scss";
 import Sidebar from "../Sidebar/Sidebar";
 import Products from "../Products/Products";
 import { formatDate } from "../../utils/common";
 import { listForProfile, profileActions } from "../../utils/constants";
+import { Spinner } from "react-bootstrap";
+import Preloader from "../Preloader/Preloader";
 
 function Profile() {
   const dispatch = useDispatch();
@@ -24,11 +25,11 @@ function Profile() {
   }, [currentUser, isLoading]);
 
   if (isLoading) {
-    return <section className="preloader">...Loading</section>;
+    return <Preloader />;
   }
 
   return !currentUser ? (
-    <section className="preloader">...Loading</section>
+    <Preloader />
   ) : (
     <>
       <Sidebar title="PROFILE" list={listForProfile} />
@@ -97,7 +98,7 @@ function Profile() {
                 />
               </svg>
 
-              <span>Log Out</span>
+              <span>Log out</span>
             </button>
           </div>
         </div>
@@ -105,7 +106,15 @@ function Profile() {
       {favorite.length ? (
         <Products products={favorite} amount={50} title="Favorite goods" />
       ) : (
-        <div> Your cart is empty</div>
+        <section className={styles.empty}>
+          <div className={styles.redirect}>
+            <h2>Your favorites are still empty</h2>
+            <h3>
+              Add products using the ❤️ icon so you don't lose them and can buy
+              them later.
+            </h3>
+          </div>
+        </section>
       )}
     </>
   );

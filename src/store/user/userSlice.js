@@ -108,6 +108,7 @@ const userSlice = createSlice({
     isLoading: false,
     showSearchForm: false,
     showProfilMene: false,
+    showSideBar:false,
   },
 
   reducers: {
@@ -120,14 +121,10 @@ const userSlice = createSlice({
       state.cart = [];
       state.token = null;
       localStorage.removeItem("token");
-      // if (userId) {
-      //   localStorage.removeItem(`cart_${userId}`);
-      //   localStorage.removeItem(`fav_${userId}`);
-      // }
     },
 
     toggleForm: (state, { payload }) => {
-      state.showSearchForm = payload;
+      state.showSideBar = payload; 
     },
 
     relatedCartProducts: (state, { payload }) => {

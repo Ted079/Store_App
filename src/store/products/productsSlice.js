@@ -16,6 +16,19 @@ export const getProducts = createAsyncThunk(
   }
 );
 
+export const createProduct = createAsyncThunk(
+  "products/CreateProduct",
+  async (payload, thunkAPI) => {
+    try {
+      const res = await axios.post(`${BASE_URL}/products`, payload);
+      return res.data;
+    } catch(err) {
+      console.log(err);
+      return thunkAPI.rejectWithValue(err);
+    }
+  }
+);
+
 const productsSlice = createSlice({
   name: "products",
   initialState: {
@@ -46,6 +59,23 @@ const productsSlice = createSlice({
     });
 
     builder.addCase(getProducts.rejected, (state) => {
+      state.isLoading = false;
+    });
+
+
+    //============================================
+    
+     builder.addCase(createProduct.pending, (state) => {
+      state.isLoading = true;
+    });
+
+    
+     builder.addCase(createProduct.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.list = action.payload;
+    });
+
+     builder.addCase(createProduct.rejected, (state) => {
       state.isLoading = false;
     });
   },

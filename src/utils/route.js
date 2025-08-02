@@ -10,4 +10,5 @@ export const ROUTES = {
     LOGIN: "/login",
     PROFILE: "/profile",
     SETTINGS: "/profile/settings",
+    CREATE: "/profile/create",
 };

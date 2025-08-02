@@ -1,9 +1,5 @@
-import React from "react";
 import styles from "./Sidebar.module.scss";
-import { NavLink, useLocation, Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { ROUTES } from "../../utils/route";
-import { isAction } from "@reduxjs/toolkit";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Sidebar = ({ list = [], title }) => {
   const location = useLocation();

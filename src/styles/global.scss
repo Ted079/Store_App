@@ -84,7 +84,14 @@ body {
   .container {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 15px;
+  }
+
+  .home-layout {
+    display: flex;
+    max-width: 1300px;
+    width: 100%;
+    gap: 15px;
   }
 
   section {

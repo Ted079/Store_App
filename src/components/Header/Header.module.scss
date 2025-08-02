@@ -1,13 +1,11 @@
 .header {
   position: relative;
+  z-index: 20;
   display: flex;
-  max-width: 1275px;
+  max-width: 1290px;
   width: 100%;
   align-items: center;
-  padding: 25px 20px;
-
-  border-radius: 5px;
-  margin-bottom: 15px;
+  padding: 15px 20px;
 
   .logo {
     width: 304px;
@@ -19,129 +17,21 @@
     justify-content: space-between;
     flex-grow: 1;
 
-    .form {
-      max-width: 300px;
-      width: 100%;
-      height: 27px;
-      display: flex;
-      background-color: var(--dark);
-      border-radius: 6px;
-      column-gap: 16px;
-      padding: 7px 10px;
-      position: relative;
-
-      .icon {
-        width: 14px;
-        height: 14px;
-      }
-
-      svg {
-        width: 100%;
-        height: 100%;
-        fill: var(--dark-sea);
-      }
-
-      .input {
-        flex-grow: 1;
-        padding-bottom: 10px;
-        position: relative;
-        z-index: 20;
-
-        input {
-          font-size: 12px;
-          background-color: none;
-          color: var(--grey);
-          outline: none;
-          width: 100%;
-          font-weight: 500;
-          position: relative;
-          bottom: 2px;
-        }
-      }
-
-      .backdrop {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        z-index: 10;
-        background-color: rgba(0, 0, 0, 0.338);
-      }
-
-      .box {
-        z-index: 20;
-        top: 120%;
-        left: 0;
-        padding: 12px;
-        display: flex;
-        position: absolute;
-        width: 100%;
-        border-radius: 8px;
-        background-color: var(--dark-sea);
-        row-gap: 8px;
-        flex-direction: column;
-        max-height: 300px;
-        overflow: auto;
-        &::-webkit-scrollbar {
-          display: none;
-        }
-      }
-
-      .item {
-        display: flex;
-        gap: 15px;
-        opacity: 0.9;
-        align-items: center;
-        &:hover {
-          opacity: 1;
-        }
-        .image {
-          width: 60px;
-          height: 60px;
-          border-radius: 6px;
-          background-repeat: no-repeat;
-          background-position: center;
-          background-size: cover;
-        }
-        .title {
-          font-size: 12px;
-          // &:hover {
-          //   color: var(--grey);
-          // }
-        }
-      }
-    }
-
-    // .item {
-    //     font-size: 13px;
-    //     color: var(--grey);
-    //     display: flex;
-    //     align-items: center;
-    //     column-gap: 16px;
-    //   }
-
-    //   .item:hover {
-    //     color: var(--light);
-    //   }
-
-    //   .image {
-    //     background-position: center;
-    //     background-repeat: no-repeat;
-    //     background-size: cover;
-    //     border-radius: 6px;
-    //     height: 50px;
-    //     width: 50px;
-    //   }
-
     .account {
       display: flex;
       align-items: center;
       column-gap: 20px;
 
+      .username {
+        font-size: 10px;
+        line-height: 12px;
+        color: var(--grey);
+      }
+
       svg {
         width: 24px;
         height: 24px;
+        stroke-width: 2px;
       }
 
       .favourites {
@@ -149,6 +39,8 @@
         position: relative;
 
         .icon-fav {
+          position: relative;
+          left: 12px;
           stroke: var(--grey);
           fill: none;
           &:hover {
@@ -172,8 +64,8 @@
         width: 14px;
         height: 14px;
         background-color: var(--violet);
-        right: -2px;
-        bottom: -2px;
+        right: -4px;
+        bottom: 11px;
         border-radius: 50%;
         font-size: 10px;
         font-weight: 700;
@@ -182,54 +74,83 @@
         line-height: 16px;
       }
 
+      .favCount {
+        @extend .count;
+        right: 7px;
+      }
+
       .user {
         position: relative;
 
         .userLink {
-          display: flex;
-          align-items: center;
-          column-gap: 10px;
-          cursor: pointer;
-
-          svg {
+          .userSvg {
+            position: relative;
+            left: 4px;
             stroke: var(--grey);
             &:hover {
               stroke: var(--white);
             }
+
+            &.active {
+              stroke: var(--white);
+            }
           }
 
-          .avatar {
-            background-color: var(--violet);
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background-color: var(--dark);
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: cover;
+          .userSvgActive {
+            stroke: var(--white);
           }
 
-          .username {
+          .usernameActive {
+            color: var(--white);
             font-size: 10px;
             line-height: 12px;
-            color: var(--grey);
           }
         }
+
         .userMenu {
-          z-index: 50;
-          top: 120%;
-          left: 0;
-          padding: 12px;
-          display: flex;
+          width: 180px;
           position: absolute;
+          z-index: 50;
+          top: 140%;
+          right: -3px;
           border-radius: 4px;
-          background-color: var(--dark-sea);
-          row-gap: 8px;
-          flex-direction: column;
+          background-color: var(--dark-sea2);
           max-height: 300px;
           overflow: auto;
           &::-webkit-scrollbar {
             display: none;
+          }
+          ul {
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+            gap: 4px;
+            margin: 6px 0;
+            li {
+              font-size: 15px;
+              // font-weight: 400;
+              box-sizing: border-box;
+              margin: 2px 2px;
+              .menu {
+                padding: 8px 12px;
+                display: block;
+                width: 100%;
+                &:hover {
+                  background-color: var(--dark-sea);
+                }
+              }
+            }
+            .menuBtn {
+              padding: 8px 12px;
+              display: block;
+              width: 100%;
+              color: var(--violet);
+              font-weight: 600;
+              &:hover {
+                background-color: var(--dark-sea);
+              }
+            }
           }
         }
       }

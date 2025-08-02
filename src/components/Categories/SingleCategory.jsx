@@ -9,8 +9,10 @@ function SingleCategory() {
 
   return (
     <>
-      <Sidebar title="CATEGORIES" list={categoriesList} />
-      <Poster />
+      <div className="home-layout">
+        <Sidebar list={categoriesList} title="CATEGORIES" />
+        <Poster />
+      </div>
       <Category />
     </>
   );

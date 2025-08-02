@@ -20,8 +20,6 @@ function App() {
 
   const noLayoutRoutes = [ROUTES.LOGIN, ROUTES.SIGNUP];
 
-  const isLoginProfile = location.pathname === ROUTES.PROFILE;
-
   const hideLayout = noLayoutRoutes.includes(location.pathname);
 
   useEffect(() => {
@@ -42,7 +40,6 @@ function App() {
         <AppRoutes />
         <ToastContainer />
       </div>
-
       <Footer />
     </div>
   );

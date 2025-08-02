@@ -120,11 +120,30 @@
         @extend .card;
         background-color: var(--violet-dark);
         color: var(--white);
-        .icon{
+        .icon {
           fill: var(--grey);
           stroke: var(--white);
         }
       }
+    }
+  }
+}
+.empty {
+  max-width: 1275px;
+  width: 100%;
+  .redirect {
+    padding: 50px;
+    text-align: center;
+
+    h2 {
+      font-weight: 500;
+      // color: var(--grey);
+    }
+
+    h3 {
+      text-align: center;
+      color: var(--grey);
+      font-weight: 400;
     }
   }
 }

@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { relatedProducts } from "../../store/products/productsSlice";
 import Products from "./Products";
 import Sidebar from "../Sidebar/Sidebar";
+import Preloader from "../Preloader/Preloader";
 
 const SingleProduct = () => {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const SingleProduct = () => {
   }, [data, dispatch, list.length]);
 
   return !data ? (
-    <section className="preloader">...Loading</section>
+    <Preloader/>
   ) : (
     <>
       <Sidebar title="CATEGORIES" list={categoriesList} />

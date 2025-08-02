@@ -4,6 +4,7 @@ import { useGetProductWithFilterQuery } from "../../store/api/apiSlice";
 import styles from "./Category.module.scss";
 import Products from "../Products/Products";
 import { useSelector } from "react-redux";
+import Preloader from "../Preloader/Preloader";
 
 function Category() {
   const { id } = useParams();
@@ -104,7 +105,7 @@ function Category() {
       </form>
 
       {isLoading ? (
-        <section className="preloader">...Loading</section> // add preloader component
+        <Preloader/>
       ) : !items.length || !isSuccess ? (
         <div className={styles.back}>
           <span>No results</span>
@@ -133,7 +134,6 @@ function Category() {
             onClick={() => {
               setParams({ ...params, offset: params.offset + params.limit });
             }}
-            // hidden
           >
             See more
           </button>

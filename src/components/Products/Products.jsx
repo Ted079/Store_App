@@ -1,11 +1,8 @@
-import React from "react";
 import styles from "./Products.module.scss";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
-import { useDispatch } from "react-redux";
-import { addItemToCart } from "../../store/user/userSlice";
 import ProductsCard from "./ProductsCard";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -18,7 +15,6 @@ const Products = ({
   isSlider = true,
 }) => {
   const list = products.filter((_, i) => i < amount);
-  console.log(list);
 
   return (
     <section className={styles.products} style={style}>
@@ -62,7 +58,6 @@ const Products = ({
               className={styles.product}
               style={{ margin: "5px", width: "238px" }}
             >
-              {console.log(item)}
               <ProductsCard {...item} />
             </div>
           ))}

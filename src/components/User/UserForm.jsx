@@ -70,7 +70,7 @@ function UserForm({
           <div className={styles.group}>
             {hasName && (
               <>
-                <label htmlFor="email">Username</label>
+                <label htmlFor="username">Username</label>
                 <input
                   type="name"
                   name="name"
@@ -98,7 +98,7 @@ function UserForm({
             />
             {error && <p className={styles.err}>{error.email}</p>}
 
-            <label htmlFor="email">Password</label>
+            <label htmlFor="password">Password</label>
             <input
               type="password"
               name="password"
