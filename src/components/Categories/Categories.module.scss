@@ -1,32 +1,64 @@
 .section {
   max-width: 1274px;
   width: 100%;
+  // background-color: var(--violet);
   h2 {
     margin: 20px;
   }
 
   .list {
-    display: flex;
-    justify-content: space-between;
+    margin: 10px;
     .item {
-      min-width: 210px;
+      max-width: 210px;
       width: calc(20% - 20px);
-
       min-height: 230px;
-      margin: 20px;
       .image {
-        max-width: 210px;
+        max-width: 200px;
         width: 100%;
         min-height: 230px;
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+
+        border-radius: 5px;
+        min-height: 210px;
       }
       h3 {
         color: var(--grey);
         font-weight: 600;
         margin-top: 10px;
         text-align: center;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .section {
+    .list {
+      .item {
+        width: calc(33.33% - 20px); // 3 items per row
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    .list {
+      .item {
+        width: calc(50% - 20px); // 2 items per row
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    .list {
+      .item {
+        width: 100%; // 1 item per row
+        margin: 10px 0;
       }
     }
   }

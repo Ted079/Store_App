@@ -1,5 +1,6 @@
 .banner {
-  width: 1274px;
+  max-width: 1274px;
+  width: 100%;
   display: flex;
   height: 570px;
   justify-content: space-between;
@@ -12,39 +13,38 @@
     margin: 90px;
     gap: 20px;
     position: relative;
-    &::before {
-      content: "";
-      display: block;
-      width: 204px;
-      height: 170px;
-      background: url("../../images/shoe.png") no-repeat, center;
-      position: absolute;
-      bottom: -20px;
-      right: 300px;
-    }
-    &::after {
-      content: "";
-      display: block;
-      width: 270px;
-      height: 151px;
-      background: url("../../images/devices.png") no-repeat, center;
-      position: absolute;
-      bottom: -110px;
-      left: 281px;
-    }
+    // &::before {
+    //   content: "";
+    //   display: block;
+    //   width: 204px;
+    //   height: 170px;
+    //   background: url("../../images/shoe.png") no-repeat, center;
+    //   position: absolute;
+    //   bottom: -20px;
+    //   right: 300px;
+    // }
+    // &::after {
+    //   content: "";
+    //   display: block;
+    //   width: 270px;
+    //   height: 151px;
+    //   background: url("../../images/devices.png") no-repeat, center;
+    //   position: absolute;
+    //   bottom: -110px;
+    //   left: 281px;
+    // }
 
     p {
-      font-size: 70px;
+      font-size: 30px;
       color: var(--violet-dark);
-      font-weight: 300;
       align-items: center;
       display: flex;
       flex-direction: column;
-      line-height: 80px;
+      line-height: 60px;
+      font-weight: 300;
 
       span {
-        font-size: 150px;
-        line-height: 190px;
+        font-size: 50px;
       }
     }
   }
@@ -69,9 +69,7 @@
       }
 
       .swiper-pagination-bullet-active {
-        background-color: var(--violet-dark);
         background-color: #eee;
-        // opacity: 1;
       }
     }
 

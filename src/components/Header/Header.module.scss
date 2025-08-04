@@ -9,6 +9,16 @@
 
   .logo {
     width: 304px;
+    font-weight: 700;
+    svg{
+      width: 40px;
+      height: 40px;
+      position: relative;
+      top: 7px;
+      path.cls-1{
+        fill:#f19b5f;
+      }
+    }
   }
 
   .info {
@@ -16,6 +26,28 @@
     align-items: center;
     justify-content: space-between;
     flex-grow: 1;
+
+    .wrapper {
+      margin-left: 90px;
+
+      width: 100%;
+      display: flex;
+      gap: 5px;
+      .category {
+        background-color: #33323242;
+        // border: 2px solid var(--sea);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        svg{
+          margin: 5px;
+          width: 30px;
+          height: 30px;
+          stroke: var(--grey);
+        }
+      }
+    }
 
     .account {
       display: flex;

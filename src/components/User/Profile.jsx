@@ -7,7 +7,6 @@ import Sidebar from "../Sidebar/Sidebar";
 import Products from "../Products/Products";
 import { formatDate } from "../../utils/common";
 import { listForProfile, profileActions } from "../../utils/constants";
-import { Spinner } from "react-bootstrap";
 import Preloader from "../Preloader/Preloader";
 
 function Profile() {

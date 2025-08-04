@@ -151,3 +151,126 @@
     }
   }
 }
+
+@media (max-width: 600px) {
+  .products {
+    padding: 0 10px;
+
+    h2 {
+      font-size: 20px;
+      margin: 15px 0;
+    }
+
+    .list {
+      flex-direction: column;
+      align-items: center;
+
+      .product {
+        width: 100%;
+        height: 250px;
+
+        .image {
+          min-height: 200px;
+        }
+
+        .wrapper {
+          .title {
+            font-size: 14px;
+          }
+
+          .categoriesName {
+            font-size: 10px;
+          }
+
+          .info {
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 20px;
+
+            .prices {
+              .price {
+                font-size: 18px;
+              }
+
+              .oldPrice {
+                font-size: 12px;
+              }
+            }
+
+            .purchases {
+              font-size: 9px;
+              text-align: right;
+            }
+          }
+
+          svg {
+            top: 0;
+            right: 0;
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .products {
+    .list {
+      .product {
+        height: 100px;
+      }
+    }
+  }
+}
+
+// @media (max-width: 370px) {
+//   .products {
+//     h2 {
+//       font-size: 16px;
+//       margin: 10px 0;
+//     }
+
+//     .list {
+//       .product {
+//         .image {
+//           min-height: 150px;
+//         }
+
+//         .wrapper {
+//           .title {
+//             font-size: 12px;
+//           }
+
+//           .categoriesName {
+//             font-size: 8px;
+//           }
+
+//           .info {
+//             margin-top: 12px;
+//             gap: 5px;
+
+//             .prices {
+//               .price {
+//                 font-size: 14px;
+//               }
+//               .oldPrice {
+//                 font-size: 10px;
+//               }
+//             }
+
+//             .purchases {
+//               font-size: 7px;
+//             }
+//           }
+
+//           svg {
+//             width: 16px;
+//             height: 16px;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }

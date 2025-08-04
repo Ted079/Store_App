@@ -22,7 +22,7 @@ export const createProduct = createAsyncThunk(
     try {
       const res = await axios.post(`${BASE_URL}/products`, payload);
       return res.data;
-    } catch(err) {
+    } catch (err) {
       console.log(err);
       return thunkAPI.rejectWithValue(err);
     }
@@ -35,11 +35,20 @@ const productsSlice = createSlice({
     list: [],
     filtered: [],
     related: [],
+    categoryFilter: [],
     isLoading: false,
   },
   reducers: {
     filteredByPrice: (state, action) => {
       state.filtered = state.list.filter(({ price }) => price < action.payload);
+      state.isLoading = false;
+    },
+
+    filteredByCategory: (state, action) => {
+      state.categoryFilter = state.list.filter(
+        ({ category: { name } }) => name === action.payload
+      );
+      state.isLoading = false;
     },
 
     relatedProducts: (state, { payload }) => {
@@ -62,25 +71,23 @@ const productsSlice = createSlice({
       state.isLoading = false;
     });
 
-
     //============================================
-    
-     builder.addCase(createProduct.pending, (state) => {
+
+    builder.addCase(createProduct.pending, (state) => {
       state.isLoading = true;
     });
 
-    
-     builder.addCase(createProduct.fulfilled, (state, action) => {
+    builder.addCase(createProduct.fulfilled, (state, action) => {
       state.isLoading = false;
       state.list = action.payload;
     });
 
-     builder.addCase(createProduct.rejected, (state) => {
+    builder.addCase(createProduct.rejected, (state) => {
       state.isLoading = false;
     });
   },
 });
 
-export const { filteredByPrice, relatedProducts } = productsSlice.actions;
+export const { filteredByPrice, relatedProducts, filteredByCategory } = productsSlice.actions;
 
 export default productsSlice.reducer;

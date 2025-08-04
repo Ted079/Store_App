@@ -1,13 +1,12 @@
-import React from "react";
-
-import BG from "../../images/computer.png";
 
 import styles from "./Poster.module.scss";
 import { posterData } from "../../utils/posterData";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
-// import "swiper/scss";
+import "swiper/scss";
 import "swiper/scss/pagination";
+import "swiper/scss/navigation";
+import { Link } from "react-router-dom";
 
 const Poster = () => {
   return (
@@ -45,14 +44,19 @@ const Poster = () => {
                 backgroundSize:"cover",
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",
+                height:"423px"
               }}
             >
+              {bgImage && <div className={styles.overlay}></div>}
+              
               <div className={styles.title}>{title}</div>
               <div className={styles.product}>
                 <div className={styles.text}>
                   <div className={styles.subtitle}>{subtitle}</div>
                   <h1 className={styles.head}>{head}</h1>
+                  <Link to="/products">
                   <button className={styles.button}>{button}</button>
+                  </Link>
                 </div>
                 {image && <div className={styles.image}>
                   <img src={image} alt="poster" />

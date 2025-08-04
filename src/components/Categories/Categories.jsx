@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Categories.module.scss";
 import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const Categories = ({ title, amount, categories = [] }) => {
   const list = [];
@@ -11,17 +12,44 @@ const Categories = ({ title, amount, categories = [] }) => {
   return (
     <section className={styles.section}>
       <h2>{title}</h2>
-      <div className={styles.list}>
-        {list.map(({ name, id, image }) => (
-          <Link to={`/categories/${id}`} key={id} className={styles.item}>
-            <div
-              className={styles.image}
-              style={{ backgroundImage: `url(${image})` }}
-            />
-            <h3>{name}</h3>
-          </Link>
-        ))}
-      </div>
+      <Swiper className={styles.list}
+        breakpoints={{
+          320: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          420: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          640: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 10,
+          },
+          1024: {
+            slidesPerView: 6,
+            spaceBetween: 10,
+          },
+        }}
+      >
+        
+          {list.map(({ name, id, image }) => (
+            <SwiperSlide className={styles.item}>
+              <Link to={`/categories/${id}`} key={id}>
+                <div
+                  className={styles.image}
+                  style={{ backgroundImage: `url(${image})` }}
+                />
+                <h3>{name}</h3>
+              </Link>
+            </SwiperSlide>
+          ))}
+       
+      </Swiper>
     </section>
   );
 };

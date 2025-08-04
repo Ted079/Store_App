@@ -6,7 +6,6 @@ $font-family: Montserrat, Roboto, sans-serif;
 
 body {
   background: $bg;
-  // background: #2a2a2a;
   font-size: 16px;
   line-height: 16px;
   font-family: $font-family;
@@ -85,6 +84,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
+    margin: 5px;
   }
 
   .home-layout {
@@ -92,6 +92,7 @@ body {
     max-width: 1300px;
     width: 100%;
     gap: 15px;
+    position: relative;
   }
 
   section {

@@ -9,10 +9,10 @@ function SingleCategory() {
 
   return (
     <>
-      <div className="home-layout">
+      {/* <div className="home-layout">
         <Sidebar list={categoriesList} title="CATEGORIES" />
         <Poster />
-      </div>
+      </div> */}
       <Category />
     </>
   );

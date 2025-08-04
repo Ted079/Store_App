@@ -99,16 +99,12 @@ const userSlice = createSlice({
   initialState: {
     currentUser: null,
     loginErr: null,
-    token: localStorage.getItem("token") || null, //local token
-    // cart: JSON.parse(localStorage.getItem("cart")) || [], //local cart
-    // favorite: JSON.parse(localStorage.getItem("fav")) || [], //local fav
+    token: localStorage.getItem("token") || null,
     cart: [],
     favorite: [],
     cartRelatedItems: [],
     isLoading: false,
-    showSearchForm: false,
-    showProfilMene: false,
-    showSideBar:false,
+    showSidebar:false,
   },
 
   reducers: {
@@ -124,13 +120,13 @@ const userSlice = createSlice({
     },
 
     toggleForm: (state, { payload }) => {
-      state.showSideBar = payload; 
+      state.showSidebar = payload; 
     },
 
     relatedCartProducts: (state, { payload }) => {
       const items = state.cart.filter(({ category: { id } }) => id === payload);
       state.cartRelatedItems = shuffle(items);
-    },
+    },///!!!!!
 
     addItemToCart: (state, { payload }) => {
       const exsistingItem = state.cart.find(({ id }) => id === payload.id);
