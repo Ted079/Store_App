@@ -35,12 +35,12 @@ function App() {
 
   return (
     <div className="app">
-      {!hideLayout && <Header />}
+      {/* {!hideLayout && <Header />} */}
       <div className="container">
         <AppRoutes />
         <ToastContainer />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

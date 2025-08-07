@@ -1,7 +1,7 @@
-import styles from "./CategoriesForm.module.scss";
+import styles from "./SidebarForm.module.scss";
 import { NavLink, useLocation } from "react-router-dom";
 
-const CategoiresForm = ({ list = [], title }) => {
+const SidebarForm = ({ list = [], title }) => {
   const location = useLocation();
 
   return (
@@ -50,4 +50,4 @@ const CategoiresForm = ({ list = [], title }) => {
   );
 };
 
-export default CategoiresForm;
+export default SidebarForm;

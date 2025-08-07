@@ -14,20 +14,25 @@ const SingleCategory = lazy(() => import("../Categories/SingleCategory"));
 const Cart = lazy(() => import("../Cart/Cart"));
 const CreareProduct = lazy(() => import("../Products/CreareProduct"));
 const UpdateUserData = lazy(() => import("../User/UpdateUserData"));
+const Layout = lazy(() => import("../Layout/Layout"));
 
 const AppRoutes = () => {
   return (
     <Suspense fallback={<Preloader />}>
       <Routes>
-        <Route index element={<Home />} />
-        <Route path={ROUTES.PRODUCT} element={<SingleProduct />} />
+        <Route element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path={ROUTES.PRODUCT} element={<SingleProduct />} />
+          <Route path={ROUTES.PROFILE} element={<Profile />} />
+          <Route path={ROUTES.SETTINGS} element={<UpdateUserData />} />
+          <Route path={ROUTES.CATEGORY} element={<SingleCategory />} />
+
+          <Route path={ROUTES.CART} element={<Cart />} />
+          <Route path={ROUTES.CREATE} element={<CreareProduct />} />
+        </Route>
+
         <Route path={ROUTES.SIGNUP} element={<Signup />} />
         <Route path={ROUTES.LOGIN} element={<Login />} />
-        <Route path={ROUTES.PROFILE} element={<Profile />} />
-        <Route path={ROUTES.SETTINGS} element={<UpdateUserData />} />
-        <Route path={ROUTES.CATEGORY} element={<SingleCategory />} />
-        <Route path={ROUTES.CART} element={<Cart />} />
-        <Route path={ROUTES.CREATE} element={<CreareProduct />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>

@@ -31,8 +31,8 @@ const Categories = ({ title, amount, categories = [] }) => {
             spaceBetween: 10,
           },
           1024: {
-            slidesPerView: 6,
-            spaceBetween: 10,
+            slidesPerView: 5,
+            spaceBetween: 50,
           },
         }}
       >
