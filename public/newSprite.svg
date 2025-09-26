@@ -53,7 +53,8 @@
         </svg>
     </symbol>
 
-    <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="close">
+    <symbol
+        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="close">
         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
         <g id="SVGRepo_iconCarrier">
@@ -63,18 +64,6 @@
         </g>
     </symbol>
 
-    <symbol>
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" id="order">
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-            <g id="SVGRepo_iconCarrier">
-                <rect x="5" y="4" width="34" height="27" rx="2" stroke="#222222"></rect>
-                <path d="M9 9H15" stroke="#222222" stroke-linecap="round"></path>
-                <path d="M9 13H15" stroke="#222222" stroke-linecap="round"></path>
-                <path d="M9 17H13" stroke="#222222" stroke-linecap="round"></path>
-            </g>
-        </svg>
-    </symbol>
 
     <symbol
         viewBox="0 0 24 24"
@@ -112,6 +101,7 @@
         </svg>
     </symbol>
 
+
     <symbol>
         <svg
             fill="none"
@@ -126,6 +116,84 @@
                 stroke-linejoin="round"
             />
         </svg>
+    </symbol>
+
+    <symbol>
+        <svg viewBox="0 0 200 200" data-name="Layer 1" id="back2"
+            xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+                <title></title>
+                <path
+                    d="M160,89.75H56l53-53a9.67,9.67,0,0,0,0-14,9.67,9.67,0,0,0-14,0l-56,56a30.18,30.18,0,0,0-8.5,18.5c0,1-.5,1.5-.5,2.5a6.34,6.34,0,0,0,.5,3,31.47,31.47,0,0,0,8.5,18.5l56,56a9.9,9.9,0,0,0,14-14l-52.5-53.5H160a10,10,0,0,0,0-20Z"></path>
+            </g>
+        </svg>
+    </symbol>
+
+    <symbol>
+        <svg
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            id="category"
+            stroke="#inherit"
+        >
+            <path
+                d="M17 10H19C21 10 22 9 22 7V5C22 3 21 2 19 2H17C15 2 14 3 14 5V7C14 9 15 10 17 10Z"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            ></path>
+            <path
+                d="M5 22H7C9 22 10 21 10 19V17C10 15 9 14 7 14H5C3 14 2 15 2 17V19C2 21 3 22 5 22Z"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            ></path>
+            <path
+                d="M6 10C8.20914 10 10 8.20914 10 6C10 3.79086 8.20914 2 6 2C3.79086 2 2 3.79086 2 6C2 8.20914 3.79086 10 6 10Z"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            ></path>
+            <path
+                d="M18 22C20.2091 22 22 20.2091 22 18C22 15.7909 20.2091 14 18 14C15.7909 14 14 15.7909 14 18C14 20.2091 15.7909 22 18 22Z"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            ></path>
+        </svg>
+    </symbol>
+
+
+    <!-- ////////////////new  -->
+
+
+
+    <symbol
+        xmlns="http://www.w3.org/2000/svg"
+        width="200"
+        height="200"
+        viewBox="0 0 24 24"
+        id="home1"
+    >
+        <g
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.5"
+            color="currentColor"
+        >
+            <path
+                d="m9 22l.002-4.002c0-.931 0-1.396.153-1.763a2 2 0 0 1 1.083-1.083C10.605 15 11.07 15 12 15v0c.93 0 1.396 0 1.764.152a2 2 0 0 1 1.083 1.083C15 16.603 15 17.068 15 18v4" />
+            <path
+                d="m7.088 4.762l-1 .781c-1.516 1.184-2.275 1.776-2.681 2.61C3 8.988 3 9.952 3 11.88v2.092c0 3.784 0 5.676 1.172 6.852S7.229 22 11 22h2c3.771 0 5.657 0 6.828-1.176S21 17.756 21 13.971v-2.09c0-1.929 0-2.893-.407-3.728c-.407-.834-1.165-1.426-2.681-2.61l-1-.78C14.552 2.92 13.372 2 12 2s-2.552.92-4.912 2.762" />
+        </g>
+
     </symbol>
 
 

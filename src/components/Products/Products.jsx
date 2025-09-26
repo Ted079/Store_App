@@ -1,7 +1,6 @@
 import styles from "./Products.module.scss";
-import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import "swiper/css";
 import ProductsCard from "./ProductsCard";
 import "swiper/css/navigation";
@@ -15,6 +14,9 @@ const Products = ({
   isSlider = true,
 }) => {
   const list = products.filter((_, i) => i < amount);
+  if (!list.length) {
+    return <></>;
+  }
 
   return (
     <section className={styles.products} style={style}>
@@ -28,24 +30,39 @@ const Products = ({
           speed={900}
           breakpoints={{
             320: {
-              slidesPerView: 1,
-              spaceBetween: 10,
+              slidesPerView: 2,
+              spaceBetween: 5,
+              slidesPerGroup: 2,
             },
             420: {
               slidesPerView: 2,
-              spaceBetween: 10,
+              spaceBetween: 8,
+              slidesPerGroup: 2,
             },
             640: {
-              slidesPerView: 2,
+              slidesPerView: 3,
               spaceBetween: 10,
+              slidesPerGroup: 3,
             },
             768: {
               slidesPerView: 3,
               spaceBetween: 10,
+              slidesPerGroup: 3,
+            },
+            860: {
+              slidesPerView: 4,
+              spaceBetween: 10,
+              slidesPerGroup: 4,
             },
             1024: {
+              slidesPerView: 4,
+              spaceBetween: 10,
+              slidesPerGroup: 4,
+            },
+            1200: {
               slidesPerView: 5,
               spaceBetween: 10,
+              slidesPerGroup: 5,
             },
           }}
           navigation={true}
@@ -59,12 +76,12 @@ const Products = ({
           ))}
         </Swiper>
       ) : (
-        <div className={styles.list} style={{ marginLeft: "7px" }}>
+        <div className={styles.list_categories}>
           {list.map((item) => (
             <div
               key={item.id}
               className={styles.product}
-              style={{ margin: "5px", width: "238px" }}
+              // style={{ margin: "5px" }}
             >
               <ProductsCard {...item} />
             </div>

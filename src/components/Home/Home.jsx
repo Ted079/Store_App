@@ -8,22 +8,14 @@ import {
   filteredByPrice,
   filteredByCategory,
 } from "../../store/products/productsSlice";
-import Sidebar from "../Sidebar/Sidebar";
-import CategoiresForm from "../Sidebar/SidebarForm";
-import Preloader from "../Preloader/Preloader";
 
 const Home = () => {
-  const { showSidebar } = useSelector(({ user }) => user);
+  const dispatch = useDispatch();
+
   const { list, filtered, categoryFilter } = useSelector(
     ({ products }) => products
   );
-
-  console.log(list);
-
-  const dispatch = useDispatch();
-  const productsList = useSelector((state) => state.products.list);
   const categoriesList = useSelector((state) => state.categories.list);
-  const filteredProducts = useSelector((state) => state.products.filtered);
 
   useEffect(() => {
     if (!list.length) return;
@@ -34,14 +26,13 @@ const Home = () => {
 
   return (
     <>
-      <div className="home-layout">
-        <Poster />
-      </div>
-      <Products products={productsList} amount={10} title="Trending" />
+      <Poster />
+      <Products products={list} amount={10} title="Trending" />
       <Categoires categories={categoriesList} amount={5} title="Worth seeing" />
+      {/* <CaruselBanner /> */}
       <Products products={categoryFilter} amount={5} title="Furnitures" />
 
-      <Banner imageList={productsList} amount={5} />
+      <Banner imageList={list} amount={5} />
 
       <Products products={filtered} amount={5} title="Less than 30$" />
     </>

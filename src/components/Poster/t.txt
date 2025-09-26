@@ -1,0 +1,413 @@
+.wrapper {
+  overflow: hidden;
+  max-width: 1270px;
+  // margin-left: 100px;
+  width: 100%;
+  // height: 423px;
+  cursor: default;
+  background-color: var(--bg);
+
+  :global {
+    .swiper-pagination-bullet {
+      width: 10px;
+      height: 10px;
+      display: inline-flex;
+      background-color: transparent;
+      border: 1px solid #eee;
+      color: #eee;
+      transition: all 0.3s ease;
+      opacity: 0.5;
+    }
+    .swiper-pagination-bullet-active {
+      background-color: #eee;
+      opacity: 1;
+    }
+
+    .swiper-slide {
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      opacity: 0.5; // по умолчанию полупрозрачные
+      transform: scale(50%); // чуть меньше
+      background-color: red;
+    }
+
+    .swiper-slide-active {
+      opacity: 1;
+      transform: scale(1); // центральный — нормальный
+    }
+  }
+  
+  .poster {
+    max-width: 7000px;
+    height: 423px;
+    height: 337px;
+    width: 100%;
+    text-transform: uppercase;
+    padding: 10px 25px;
+    aspect-ratio: 3 / 1;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 5px;
+    
+    @media (max-width: 768px) {
+      height: 250px;
+    }
+    @media (max-width: 480px) {
+      height: 180px;
+    }
+    
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.1);
+      z-index: 1;
+    }
+    
+    .title {
+      font-size: 117px;
+      font-size: 100px;
+      line-height: 146px;
+      font-weight: 900;
+      opacity: 0.2;
+      opacity: 0.6;
+    }
+    
+    .product {
+      max-width: 895px;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+      .text {
+        padding-left: 5px;
+        .subtitle {
+          color: #ffffff;
+          font-weight: 500;
+          line-height: 20px;
+          margin-top: 20px;
+        }
+        
+        .head {
+          font-weight: 700;
+          font-size: 42px;
+          line-height: 52px;
+          width: 480px;
+          margin-top: 10px;
+        }
+        .button {
+          margin-top: 15px;
+        }
+      }
+
+      .image {
+        max-width: 462px;
+        width: 100%;
+        position: relative;
+        top: -270px;
+        right: -400px;
+      }
+    }
+  }
+
+  .style2 {
+    .title {
+      // color: #222;
+      font-size: 90px;
+      // color: red;
+      opacity: 0.3;
+      opacity: 0;
+    }
+
+    .product {
+      max-width: 895px;
+      width: 100%;
+      .text {
+        padding-left: 5px;
+        .subtitle {
+          color: white;
+          opacity: 0.8;
+        }
+
+        .head {
+          font-weight: 700;
+          font-size: 42px;
+          line-height: 52px;
+          max-width: 660px;
+          width: 100%;
+          margin-top: 10px;
+          opacity: 0.8;
+        }
+        .button {
+          background: white;
+          color: black;
+        }
+      }
+
+      .image {
+        img {
+          width: 400px;
+        }
+      }
+    }
+  }
+
+  .style3 {
+    color: #ffffff;
+
+    .title {
+      color: #f5deb3;
+      opacity: 0.9;
+    }
+
+    .product {
+      .text {
+        .subtitle {
+          // color: #f5deb3;
+        }
+
+        .head {
+          // color: #f5deb3;
+        }
+        .button {
+          background: #ffffff;
+          color: #333;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .wrapper {
+    .poster {
+      .title {
+        font-size: 80px;
+        // line-height: 90px;
+        // color: red;
+      }
+
+      // .product {
+      //   flex-direction: column;
+      //   .text {
+      //     .head {
+      //       font-size: 30px;
+      //       line-height: 38px;
+      //     }
+      //   }
+
+      //   .image {
+      //     position: static;
+      //     margin-top: 20px;
+      //     img {
+      //       width: 250px;
+      //     }
+      //   }
+      // }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    height: 300px;
+    .poster {
+      height: 300px;
+      .title {
+        font-size: 70px;
+      }
+      .product {
+        .text {
+          .subtitle {
+            font-size: 20px;
+          }
+
+          .head {
+            font-size: 24px;
+            line-height: 32px;
+          }
+
+          .button {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .wrapper {
+    .poster {
+      .title {
+        font-size: 50px;
+        line-height: 60px;
+        margin-bottom: 90px;
+      }
+
+      .product {
+        .text {
+          .subtitle {
+            font-size: 18px;
+            margin-bottom: 20px;
+          }
+
+          .head {
+            font-size: 22px;
+            line-height: 32px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    height: 200px;
+    .posterWrapper {
+      .poster {
+        padding: 10px;
+
+        .title {
+          font-size: 40px;
+          line-height: 30px;
+        }
+
+        .product {
+          .text {
+            .subtitle {
+              font-size: 12px;
+              margin-bottom: 0px;
+            }
+
+            .head {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  :global(.swiper-pagination) {
+    left: 0;
+    text-align: center;
+    width: 5px;
+    height: 5px;
+  }
+}
+
+@media (max-width: 370px) {
+  .poster {
+    .title {
+      font-size: 30px;
+      line-height: 40px;
+    }
+
+    .product {
+      .text {
+        .head {
+          font-size: 18px;
+          line-height: 26px;
+        }
+
+        .button {
+          font-size: 12px;
+          padding: 4px 8px;
+        }
+      }
+    }
+  }
+}
+
+import styles from "./Poster.module.scss";
+import { posterData } from "../../utils/posterData";
+import { Swiper, SwiperSlide } from "swiper/react";
+import {
+  Autoplay,
+  Pagination,
+  Navigation,
+  EffectCoverflow,
+} from "swiper/modules";
+import "swiper/scss";
+import "swiper/scss/pagination";
+import "swiper/scss/navigation";
+import "swiper/scss/effect-coverflow";
+import { Link, useNavigate } from "react-router-dom";
+
+const Poster = () => {
+  const navigate = useNavigate();
+  return (
+    <section className={styles.wrapper}>
+      <Swiper
+        spaceBetween={25}
+        effect={"coverflow"}
+        grabCursor={true}
+        centeredSlides={true}
+        slidesPerView={2}
+        autoplay={{
+          delay: 10000,
+          disableOnInteraction: false,
+        }}
+        coverflowEffect={{
+          rotate: 0,
+          stretch: 30,
+          depth: 200,
+          modifier: 0,
+          slideShadows: true,
+        }}
+        
+        speed={700}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Autoplay, Pagination, EffectCoverflow]}
+      >
+        {posterData.map(
+          ({
+            title,
+            id,
+            subtitle,
+            head,
+            image,
+            button,
+            className,
+            bgImage,
+          }) => (
+            <SwiperSlide
+              key={id}
+              className={`${styles.poster} ${styles[className]}`}
+              style={{
+                backgroundImage: bgImage ? `url(${bgImage})` : undefined,
+              }}
+              onClick={() => navigate("/products")}
+            >
+              {bgImage && <div className={styles.overlay}></div>}
+
+              <div className={styles.title}>{title}</div>
+              <div className={styles.product}>
+                <div className={styles.text}>
+                  <div className={styles.subtitle}>{subtitle}</div>
+                  <h1 className={styles.head}>{head}</h1>
+                  <Link to="/products">
+                    <button className={styles.button}>{button}</button>
+                  </Link>
+                </div>
+                {image && (
+                  <div className={styles.image}>
+                    <img src={image} alt="poster" />
+                  </div>
+                )}
+              </div>
+            </SwiperSlide>
+          )
+        )}
+      </Swiper>
+    </section>
+  );
+};
+
+export default Poster;
+

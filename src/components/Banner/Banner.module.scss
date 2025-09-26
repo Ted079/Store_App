@@ -8,31 +8,10 @@
   .left {
     width: 450px;
     display: flex;
-    // flex-direction: column;
     align-items: center;
     margin: 90px;
     gap: 20px;
     position: relative;
-    // &::before {
-    //   content: "";
-    //   display: block;
-    //   width: 204px;
-    //   height: 170px;
-    //   background: url("../../images/shoe.png") no-repeat, center;
-    //   position: absolute;
-    //   bottom: -20px;
-    //   right: 300px;
-    // }
-    // &::after {
-    //   content: "";
-    //   display: block;
-    //   width: 270px;
-    //   height: 151px;
-    //   background: url("../../images/devices.png") no-repeat, center;
-    //   position: absolute;
-    //   bottom: -110px;
-    //   left: 281px;
-    // }
 
     p {
       font-size: 30px;
@@ -91,5 +70,60 @@
         color: var(--violet-dark);
       }
     }
+  }
+}
+
+@media (max-width: 1024px) {
+  .banner {
+    .left {
+      width: 100%;
+      margin: 40px 20px;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      p {
+        font-size: 24px;
+      }
+      svg {
+        width: 250px;
+      }
+    }
+
+    .right {
+      width: 100%;
+      .discount {
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .banner {
+    height: 500px;
+    .left {
+      display: none;
+      margin: 20px 10px;
+      gap: 40px;
+      p {
+        font-size: 20px;
+      }
+    }
+
+    .right {
+      width: 100%;
+      .discount {
+        font-size: 12px;
+        bottom: 5px;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .banner {
+    display: none;
   }
 }

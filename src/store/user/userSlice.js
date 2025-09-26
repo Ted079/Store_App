@@ -145,6 +145,7 @@ const userSlice = createSlice({
 
     removeItemToCart: (state, { payload }) => {
       state.cart = state.cart.filter(({ id }) => id !== payload);
+      
       const userId = state.currentUser?.id;
       if (userId) {
         localStorage.setItem(`cart_${userId}`, JSON.stringify(state.cart)); // local cart
@@ -158,6 +159,8 @@ const userSlice = createSlice({
           ...payload,
         });
       }
+
+
       const userId = state.currentUser?.id;
       if (userId) {
         localStorage.setItem(`fav_${userId}`, JSON.stringify(state.favorite));

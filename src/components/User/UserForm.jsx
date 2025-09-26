@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { validateValues } from "../../utils/common";
+import { ROUTES } from "../../utils/route";
 
 function UserForm({
   updateUserHandler,
@@ -63,7 +64,9 @@ function UserForm({
         <h1>{title}</h1>
 
         <div className={styles.logo}>
-          <img src={logo} alt="Stuff" />
+          <Link to={ROUTES.HOME}>
+            <img src={logo} alt="Stuff" />
+          </Link>
         </div>
 
         <form className={styles.form} onSubmit={handleSubmit} noValidate>

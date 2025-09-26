@@ -11,10 +11,13 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import { ROUTES } from "../../utils/route";
 import { toast } from "react-toastify";
+import { useMediaQuery } from "react-responsive";
+import Quentity from "./Quentity";
 
 function Cart() {
   const { cart } = useSelector(({ user }) => user);
   const productsList = useSelector((state) => state.products.list);
+  const isTablet = useMediaQuery({ maxWidth: 1024 });
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -24,10 +27,6 @@ function Cart() {
 
   const changeQuantity = (item, quantity) => {
     dispatch(addItemToCart({ ...item, quantity }));
-    // toast("Quantity has been changed", {
-    //   position: "bottom-left",
-    //   theme: "dark",
-    // });
   };
 
   const removeItem = (id) => {
@@ -72,10 +71,13 @@ function Cart() {
                   return (
                     <div className={styles.item} key={id}>
                       <Link to={`/products/${id}`} className={styles.link}>
-                        <div
-                          className={styles.image}
-                          style={{ backgroundImage: `url(${images[0]})` }}
-                        />
+                        <div>
+                          <div
+                            className={styles.image}
+                            style={{ backgroundImage: `url(${images[0]})` }}
+                          />
+                        </div>
+
                         <div className={styles.info}>
                           <h3 className={styles.name}>{title}</h3>
                           <div className={styles.category}>{category.name}</div>
@@ -84,7 +86,7 @@ function Cart() {
 
                       <div className={styles.price}>{price}$</div>
 
-                      <div className={styles.quentity}>
+                      {/* <div className={styles.quentity}>
                         <div
                           className={styles.minus}
                           onClick={() =>
@@ -110,7 +112,15 @@ function Cart() {
                             />
                           </svg>
                         </div>
-                      </div>
+                      </div> */}
+
+                      {!isTablet && (
+                        <Quentity
+                          changeQuantity={changeQuantity}
+                          item={item}
+                          quantity={quantity}
+                        />
+                      )}
 
                       <div className={styles.total}>{price * quantity}$</div>
 

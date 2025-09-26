@@ -46,7 +46,7 @@ function Category() {
 
   useEffect(() => {
     if (!id || !list.length) return;
-    const category = list.find((item) => item.id === Number(id)); //+, id * 1, Number(id)
+    const category = list.find((item) => item.id === Number(id));
     setCatories(category);
   }, [id, list]);
 
@@ -54,7 +54,7 @@ function Category() {
     if (isLoading) return;
     if (!data.length) setEnd(false);
 
-    setItems((prevItems) => [...prevItems, ...data]); // добавляем к загруженный данным, а не меняем их
+    setItems((prevItems) => [...prevItems, ...data]);
   }, [isLoading, data]);
 
   const handleChange = ({ target: { name, value } }) => {
@@ -64,7 +64,7 @@ function Category() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setItems([]);
-    setParams({ ...defaultParams, ...values }); // ...values будет обновлять значения, так как в params значения только defaultValues у которого значения дефолт, a values будет обновлять его за счет setValues
+    setParams({ ...defaultParams, ...values });
   };
 
   return (
@@ -105,7 +105,7 @@ function Category() {
       </form>
 
       {isLoading ? (
-        <Preloader/>
+        <Preloader />
       ) : !items.length || !isSuccess ? (
         <div className={styles.back}>
           <span>No results</span>

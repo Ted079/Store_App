@@ -49,7 +49,7 @@
     <path d="M4.375 15.625L15.625 4.375" stroke-width="2" stroke-linecap="round"
       stroke-linejoin="round"></path>
   </symbol>
- 
+
 
   <symbol fill="inherit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15" id="plus">
     <g clip-path="url(#clip0_103_316)">
@@ -67,5 +67,6 @@
     <path
       d="M15.4895 8.3125H3.51055C2.8834 8.3125 2.375 8.84316 2.375 9.5C2.375 10.1568 2.8834 10.6875 3.51055 10.6875H15.4895C16.1166 10.6875 16.625 10.1568 16.625 9.5C16.625 8.84316 16.1166 8.3125 15.4895 8.3125Z"></path>
   </symbol>
-  
+
+
 </svg>

@@ -1,9 +1,40 @@
 .section {
   max-width: 1274px;
   width: 100%;
-  // background-color: var(--violet);
   h2 {
     margin: 20px;
+  }
+
+  :global {
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: var(--violet-dark);
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+      display: flex;
+
+      @media (min-width: 1025px) {
+        display: none;
+      }
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+      font-size: 16px;
+      font-weight: 700;
+    }
   }
 
   .list {
@@ -37,7 +68,7 @@
   .section {
     .list {
       .item {
-        width: calc(33.33% - 20px); // 3 items per row
+        width: calc(33.33% - 20px);
       }
     }
   }
@@ -47,7 +78,7 @@
   .section {
     .list {
       .item {
-        width: calc(50% - 20px); // 2 items per row
+        width: calc(50% - 20px);
       }
     }
   }
@@ -57,7 +88,7 @@
   .section {
     .list {
       .item {
-        width: 100%; // 1 item per row
+        width: 100%;
         margin: 10px 0;
       }
     }

@@ -1,13 +1,9 @@
-import BG1 from "../../src/images/computer.png";
-// import BG2 from '../../src/images/nike_shoes.webp';
-import BG2 from "../../src/images/nike_shoes.webp";
-import BG3 from "../../src/images/store.svg";
-import sofa from "../images/sofaPb.jpg";
 import sofa2 from "../images/sofa6.jpg";
 import sofa1 from "../images/sofa1.jpg";
 import comp1 from "../images/comp4.jpg";
-import cheaps from "../images/sony_cheaps.png";
 import clothes from "../images/clothes/clothes_2.png";
+import img2 from "../images/comp3.jpg";
+import img3 from "../images/sofaPb.jpg";
 
 export const posterData = [
   {
@@ -17,7 +13,7 @@ export const posterData = [
     head: "LENNON r2d2 with NVIDIA 5090 TI",
     image: null,
     button: "Shop Now",
-    className: "style1",
+    className: null,
     bgImage: comp1,
   },
   {
@@ -27,7 +23,7 @@ export const posterData = [
     head: "Timeless Black Dress & Tailored Suits Collection",
     image: null,
     button: "Explore",
-    className: "style2",
+    className: null,
     bgImage: clothes,
   },
   {
@@ -37,7 +33,7 @@ export const posterData = [
     head: "SMART HOME KIT 2025 edition",
     image: null,
     button: "Buy Now",
-    className: "style3",
+    className: null,
     bgImage: sofa2,
   },
   {
@@ -47,7 +43,37 @@ export const posterData = [
     head: "SMART HOME KIT 2025 edition",
     image: null,
     button: "Buy Now",
-    className: "style3",
+    className: null,
     bgImage: sofa1,
+  },
+  {
+    id: 5,
+    title: "WORK & PLAY",
+    subtitle: "Performance for any task",
+    head: "Gaming PC Titan X",
+    image: null,
+    button: "Shop Now",
+    className: null,
+    bgImage: img2,
+  },
+  {
+    id: 6,
+    title: "TRENDING",
+    subtitle: "Minimalist style, maximum comfort",
+    head: "Scandinavian Sofa",
+    image: null,
+    button: "Discover",
+    className: null,
+    bgImage: img3,
+  },
+  {
+    id: 7,
+    title: "NEW ARRIVAL",
+    subtitle: "Elegance meets modern minimalism",
+    head: "Timeless Black Dress ",
+    image: null,
+    button: "Explore",
+    className: null,
+    bgImage: null,
   },
 ];

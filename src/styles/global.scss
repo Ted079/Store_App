@@ -85,6 +85,11 @@ body {
     flex-wrap: wrap;
     gap: 15px;
     margin: 5px;
+
+    @media (max-width: 640px) {
+      margin: 0px;
+      gap: 8px;
+    }
   }
 
   .home-layout {

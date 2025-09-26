@@ -1,7 +1,9 @@
 .wrapper {
-  width: 1274px;
+  max-width: 1274px;
+  width: 100%;
   background-color: var(--dark);
   border-radius: 6px;
+  margin: 1px;
 
   .title {
     margin: 20px;
@@ -10,13 +12,22 @@
   .filters {
     display: flex;
     gap: 20px;
-    margin-left: 19px;
+    margin-left: 11px;
     margin-bottom: 10px;
+
+    @media (max-width: 640px) {
+      margin-left: 8px;
+    }
+    @media (max-width: 640px) {
+      gap: 7px;
+      margin-left: 5px;
+    }
     .filter {
       position: relative;
-      
+
       input {
-        width: 230px;
+        max-width: 230px;
+        width: 100%;
         height: 40px;
         border-radius: 8px;
         margin-top: 10px;
@@ -38,7 +49,6 @@
     margin: 22px;
     span {
       margin-right: 20px;
-
     }
   }
 
