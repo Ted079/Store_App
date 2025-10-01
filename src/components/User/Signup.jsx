@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import styles from "./Auth.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 import LOGO from "../../images/logo.svg";
@@ -46,7 +45,7 @@ function Signup() {
         redirectLink={{
           path: ROUTES.LOGIN,
           text: "if you already have an account",
-          title: "Sign in"
+          title: "Log in"
         }}
       />
     </>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import Poster from "../Poster/Poster";
 import Products from "../Products/Products";
 import Categoires from "../Categories/Categories";
@@ -8,7 +8,6 @@ import {
   filteredByPrice,
   filteredByCategory,
 } from "../../store/products/productsSlice";
-import Sidebar from "../Sidebar/Sidebar";
 
 const Home = () => {
   const dispatch = useDispatch();

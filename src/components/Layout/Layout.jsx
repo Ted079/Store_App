@@ -8,9 +8,11 @@ import Footer from "../Footer/Footer";
 import styles from "./Layout.module.scss";
 import { toggleForm } from "../../store/user/userSlice";
 import { useMediaQuery } from "react-responsive";
+import Preloader from "../Preloader/Preloader";
 
 const Layout = () => {
   const { showSidebar } = useSelector((state) => state.user);
+  const { list } = useSelector(({ products }) => products);
   const categoriesList = useSelector((state) => state.categories.list);
   const dispatch = useDispatch();
   const location = useLocation();
@@ -36,15 +38,25 @@ const Layout = () => {
         <SidebarForm list={categoriesList} title="CATEGORIES" />
       </div>
 
-      <div
-        onClick={() => {
-          dispatch(toggleForm(false));
-        }}
-        className={`${styles.overlay} ${showSidebar ? styles.active : ""}`}
-      />
+      <>
+        {!list.length ? (
+          <Preloader />
+        ) : (
+          <>
+            <div
+              onClick={() => {
+                dispatch(toggleForm(false));
+              }}
+              className={`${styles.overlay} ${
+                showSidebar ? styles.active : ""
+              }`}
+            />
 
+            <Outlet />
+          </>
+        )}
+      </>
       {isMobile && <BottomNav />}
-      <Outlet />
       <Footer />
     </>
   );
