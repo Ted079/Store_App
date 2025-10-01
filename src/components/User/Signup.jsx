@@ -1,4 +1,4 @@
-import styles from "./Auth.module.scss";
+import styles from "./auth.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 import LOGO from "../../images/logo.svg";
 import { ROUTES } from "../../utils/route";
