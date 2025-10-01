@@ -8,14 +8,15 @@ import img3 from "../images/sofaPb.jpg";
 export const posterData = [
   {
     id: 1,
-    title: "BIG SALE 20%",
-    subtitle: "the bestseller of 2024",
-    head: "LENNON r2d2 with NVIDIA 5090 TI",
+    title: "WORK & PLAY",
+    subtitle: "Performance for any task",
+    head: "Gaming PC Titan X",
     image: null,
     button: "Shop Now",
     className: null,
-    bgImage: comp1,
+    bgImage: img2,
   },
+
   {
     id: 2,
     title: "NEW ARRIVAL",
@@ -46,15 +47,16 @@ export const posterData = [
     className: null,
     bgImage: sofa1,
   },
+
   {
     id: 5,
-    title: "WORK & PLAY",
-    subtitle: "Performance for any task",
-    head: "Gaming PC Titan X",
+    title: "BIG SALE 20%",
+    subtitle: "the bestseller of 2024",
+    head: "LENNON r2d2 with NVIDIA 5090 TI",
     image: null,
     button: "Shop Now",
     className: null,
-    bgImage: img2,
+    bgImage: comp1,
   },
   {
     id: 6,
