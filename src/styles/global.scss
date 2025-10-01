@@ -86,7 +86,7 @@ body {
     gap: 15px;
     margin: 5px;
 
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
       margin: 0px;
       gap: 8px;
     }
@@ -120,13 +120,13 @@ body {
 
   section {
     background: $dark;
-    // background: white;
     border-radius: 6px;
   }
 
   button {
     background: $violet-dark;
     border-radius: 6px;
+    border-radius: 30px;
     padding: 9px 20px;
     font-weight: 600;
     line-height: 20px;

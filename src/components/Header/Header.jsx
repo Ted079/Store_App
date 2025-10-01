@@ -8,8 +8,6 @@ import { logOutUser, toggleForm } from "../../store/user/userSlice";
 import SearchForm from "../Search/SearchForm";
 import { UseEscapeKey } from "../../hooks/UseEscapeKey";
 import UseClickOutside from "../../hooks/UseClickOutside";
-import { useMediaQuery } from "react-responsive";
-
 
 const Header = () => {
   const { currentUser, cart, favorite, showSidebar } = useSelector(
@@ -21,7 +19,8 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const ref = useRef(null);
-  const isMobile = useMediaQuery({maxWidth: 768});
+
+  const value = Object.entries(values);
 
   const toggleClickHandler = () => {
     setProfileMenu((previous) => !previous);
@@ -40,7 +39,6 @@ const Header = () => {
     setValues(currentUser);
   }, [currentUser]);
 
-  // UseEscapeKey(profileMenu ? closeMenuHandler : null);
   UseEscapeKey(closeMenuHandler);
 
   UseClickOutside(
@@ -108,7 +106,7 @@ const Header = () => {
                   !currentUser ? styles.username : styles.usernameActive
                 }
               >
-                {!isMobile && values.name}
+                {values.name.length > 5 ? values.name.slice(0, 4) : values.name}
               </div>
             </Link>
             {profileMenu && currentUser && (

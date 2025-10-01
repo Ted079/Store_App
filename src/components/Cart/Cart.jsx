@@ -3,21 +3,15 @@ import styles from "./Cart.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import Products from "../Products/Products";
 import { sumBy } from "../../utils/common";
-import {
-  addItemToCart,
-  relatedCartProducts,
-  removeItemToCart,
-} from "../../store/user/userSlice";
+import { addItemToCart, removeItemToCart } from "../../store/user/userSlice";
 import { Link, useNavigate } from "react-router-dom";
-import { ROUTES } from "../../utils/route";
 import { toast } from "react-toastify";
-import { useMediaQuery } from "react-responsive";
-import Quentity from "./Quentity";
+import Quantity from "./Quantity/Quantity";
+import Empty from "./Empty/Empty";
 
 function Cart() {
   const { cart } = useSelector(({ user }) => user);
   const productsList = useSelector((state) => state.products.list);
-  const isTablet = useMediaQuery({ maxWidth: 1024 });
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -41,23 +35,7 @@ function Cart() {
     <>
       {!cart.length ? (
         <>
-          <section className={styles.container}>
-            <div className={styles.empty}>
-              <div className={styles.redirect}>
-                <h2>
-                  You don't have any items in your cart. Let's get shopping!
-                </h2>
-                <button onClick={() => navigate(ROUTES.HOME)}>
-                  Start Shopping
-                </button>
-              </div>
-              <Products
-                products={productsList}
-                amount={10}
-                title="Reconmended You"
-              />
-            </div>
-          </section>
+          <Empty />
         </>
       ) : (
         <div className={styles.container}>
@@ -79,60 +57,40 @@ function Cart() {
                         </div>
 
                         <div className={styles.info}>
+                          <div className={styles.total}>
+                            {price * quantity}$
+                          </div>
                           <h3 className={styles.name}>{title}</h3>
-                          <div className={styles.category}>{category.name}</div>
+                          <div
+                            className={styles.category}
+                            onClick={() => navigate(`/categories/${id}`)}
+                          >
+                            {category.name}
+                          </div>
                         </div>
                       </Link>
 
-                      <div className={styles.price}>{price}$</div>
+                      <div className={styles["other-side"]}>
+                        <div className={styles.price}>{price}$</div>
 
-                      {/* <div className={styles.quentity}>
-                        <div
-                          className={styles.minus}
-                          onClick={() =>
-                            changeQuantity(item, Math.max(1, quantity - 1))
-                          }
-                        >
-                          <svg className="icon">
-                            <use
-                              xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#minus`}
-                            />
-                          </svg>
-                        </div>
-                        <span>{quantity}</span>
-                        <div
-                          className={styles.plus}
-                          onClick={() =>
-                            changeQuantity(item, Math.max(1, quantity + 1))
-                          }
-                        >
-                          <svg className="icon">
-                            <use
-                              xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#plus`}
-                            />
-                          </svg>
-                        </div>
-                      </div> */}
-
-                      {!isTablet && (
-                        <Quentity
+                        <Quantity
                           changeQuantity={changeQuantity}
                           item={item}
                           quantity={quantity}
                         />
-                      )}
 
-                      <div className={styles.total}>{price * quantity}$</div>
+                        <div className={styles.total}>{price * quantity}$</div>
 
-                      <div
-                        className={styles.close}
-                        onClick={() => removeItem(id)}
-                      >
-                        <svg className={styles.icon}>
-                          <use
-                            xlinkHref={`${process.env.PUBLIC_URL}/newSprite.svg#close`}
-                          />
-                        </svg>
+                        <div
+                          className={styles.close}
+                          onClick={() => removeItem(id)}
+                        >
+                          <svg className={styles.icon}>
+                            <use
+                              xlinkHref={`${process.env.PUBLIC_URL}/newSprite.svg#close`}
+                            />
+                          </svg>
+                        </div>
                       </div>
                     </div>
                   );
@@ -145,6 +103,7 @@ function Cart() {
               <div className={styles.items}>
                 Items:{" "}
                 <span>{sumBy(cart.map(({ quantity }) => quantity))}</span>
+                <span></span>
               </div>
               <div className={styles.shipping}>
                 Estimate Shipping: <span>0$</span>

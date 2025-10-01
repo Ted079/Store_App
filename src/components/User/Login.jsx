@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LOGO from "../../images/logo.svg";
-import styles from "./auth.module.scss";
+import styles from "./Auth.module.scss";
 import { ROUTES } from "../../utils/route";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -47,12 +47,13 @@ function Login() {
         initialErrorState={errorInitialValues}
         logo={LOGO}
         styles={styles}
+        title="Sign in to your account"
         updateUserHandler={handleSubmit}
         buttonText="Log in"
         redirectLink={{
           path: ROUTES.SIGNUP,
           text: "if you already have an account",
-          title: "Sign in",
+          title: "Sign up",
         }}
       />
     </>

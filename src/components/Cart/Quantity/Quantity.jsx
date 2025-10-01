@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./Cart.module.scss";
+import styles from "./Quantity.module.scss";
 
-function Quentity({quantity, changeQuantity, item}) {
+function Quantity({quantity, changeQuantity, item}) {
   return (
     <div className={styles.quentity}>
       <div
@@ -25,4 +25,4 @@ function Quentity({quantity, changeQuantity, item}) {
   );
 }
 
-export default Quentity;
+export default Quantity;

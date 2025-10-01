@@ -81,7 +81,6 @@ const Products = ({
             <div
               key={item.id}
               className={styles.product}
-              // style={{ margin: "5px" }}
             >
               <ProductsCard {...item} />
             </div>

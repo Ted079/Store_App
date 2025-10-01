@@ -114,23 +114,6 @@
           margin-top: 50px;
           padding-bottom: 10px;
 
-          .prices {
-            gap: 5px;
-            display: flex;
-            .price {
-              color: var(--violet-dark);
-              font-size: 20px;
-              font-weight: 700;
-            }
-            .oldPrice {
-              font-size: 13px;
-              font-weight: 500;
-              line-height: 16px;
-              color: var(--dark-sea);
-              text-decoration: line-through;
-            }
-          }
-
           .purchases {
             font-size: 10px;
             color: var(--dark-sea);
@@ -161,7 +144,7 @@
   .list_categories {
     @extend .list;
     display: grid;
-    grid-template-columns: repeat(5, 1fr); // планшет
+    grid-template-columns: repeat(5, 1fr);
     gap: 10px;
 
     .product {
@@ -173,7 +156,7 @@
 @media (max-width: 1200px) {
   .products {
     .list_categories {
-      grid-template-columns: repeat(4, 1fr); // планшет
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 }
@@ -237,7 +220,7 @@
     }
 
     .list_categories {
-      grid-template-columns: repeat(3, 1fr); // мобильный
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 }
@@ -245,7 +228,7 @@
 @media (max-width: 768px) {
   .products {
     .list_categories {
-      grid-template-columns: repeat(3, 1fr); // мобильный
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 }
@@ -288,7 +271,7 @@
     }
 
     .list_categories {
-      grid-template-columns: repeat(2, 1fr); // мобильный
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 }
@@ -322,7 +305,7 @@
     }
 
     .list_categories {
-      grid-template-columns: repeat(2, 1fr); 
+      grid-template-columns: repeat(2, 1fr);
       gap: 5px;
       padding: 5px;
     }
@@ -344,341 +327,7 @@
     }
 
     .list_categories {
-      grid-template-columns: repeat(2, 1fr); // на очень маленьком экране
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 }
-
-// === Анимации отдельно ===
-// @keyframes fadeIn {
-//   from {
-//     opacity: 0;
-//     transform: translateY(20px);
-//   }
-//   to {
-//     opacity: 1;
-//     transform: translateY(0);
-//   }
-// }
-
-// @keyframes appear {
-//   from {
-//     transform: translateY(0);
-//   }
-//   to {
-//     transform: translateY(-5px);
-//     opacity: 1;
-//     box-shadow: 0px 5px 5px var(--dark);
-//   }
-// }
-
-// // === Общие стили карточки ===
-// %product {
-//   background-color: var(--bg);
-//   border-radius: 8px;
-//   overflow: hidden;
-//   opacity: 0.9;
-//   transition: all 0.2s ease;
-//   min-height: 350px;
-
-//   &:hover {
-//     animation: appear 200ms ease-out forwards;
-//   }
-
-//   .image {
-//     width: 100%;
-//     min-height: 350px;
-//     background: center / cover no-repeat;
-//   }
-
-//   .wrapper {
-//     margin: 10px;
-//     position: relative;
-
-//     .title {
-//       font-size: 15px;
-//       font-weight: 600;
-//       width: 180px;
-//       display: -webkit-box;
-//       -webkit-line-clamp: 2;
-//       -webkit-box-orient: vertical;
-//       overflow: hidden;
-//       text-overflow: ellipsis;
-//       min-height: calc(1.2em * 2);
-//       line-height: 1.2em;
-//     }
-
-//     .categoriesName {
-//       text-transform: uppercase;
-//       font-size: 12px;
-//       color: var(--grey);
-//     }
-
-//     .info {
-//       display: flex;
-//       justify-content: space-between;
-//       margin-top: 50px;
-//       padding-bottom: 10px;
-
-//       .prices {
-//         display: flex;
-//         gap: 5px;
-
-//         .price {
-//           color: var(--violet-dark);
-//           font-size: 20px;
-//           font-weight: 700;
-//         }
-
-//         .oldPrice {
-//           font-size: 13px;
-//           font-weight: 500;
-//           color: var(--dark-sea);
-//           text-decoration: line-through;
-//         }
-//       }
-
-//       .purchases {
-//         font-size: 10px;
-//         color: var(--dark-sea);
-//       }
-//     }
-
-//     svg {
-//       position: absolute;
-//       top: 0;
-//       right: 5px;
-//       width: 22px;
-//       height: 22px;
-//       cursor: pointer;
-//     }
-
-//     .icon {
-//       stroke: var(--grey);
-//       fill: none;
-//     }
-
-//     .iconFill {
-//       stroke: var(--grey);
-//       fill: var(--grey);
-//     }
-//   }
-// }
-
-// // === Компонент Products ===
-// .products {
-//   max-width: 1274px;
-//   width: 100%;
-
-//   h2 {
-//     margin: 20px;
-//   }
-
-//   .list {
-//     display: flex;
-//     flex-wrap: wrap;
-//     padding: 10px;
-//     animation: fadeIn 0.5s ease forwards;
-
-//     :global {
-//       .swiper-button-next,
-//       .swiper-button-prev {
-//         color: var(--violet-dark);
-//         background: rgba(255, 255, 255, 0.8);
-//         border-radius: 50%;
-//         width: 32px;
-//         height: 32px;
-//         display: flex;
-//         align-items: center;
-//         justify-content: center;
-//         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-//         z-index: 10;
-//       }
-
-//       .swiper-button-next,
-//       .swiper-button-prev {
-//         top: 50%;
-//         transform: translateY(-50%);
-//       }
-
-//       .swiper-button-next::after,
-//       .swiper-button-prev::after {
-//         font-size: 16px;
-//         font-weight: 700;
-//       }
-//     }
-
-//     .product {
-//       @extend %product;
-//       width: 235px;
-//       height: 500px;
-//       margin-bottom: 10px;
-//     }
-//   }
-
-//   .list_categories {
-//     display: grid;
-//     flex-wrap: nowrap;
-//     gap: 7px;
-//     padding: 10px;
-//     animation: fadeIn 0.5s ease forwards;
-//     grid-template-columns: repeat(5, 1fr);
-
-//     .product {
-//       @extend %product;
-//       width: 100%;
-//     }
-//   }
-// }
-
-// // === Адаптив ===
-// @media (max-width: 1200px) {
-//   .products {
-//     .list_categories {
-//       grid-template-columns: repeat(4, 1fr);
-//     }
-
-//     .product {
-//       width: 500px;
-//     }
-//   }
-// }
-
-// @media (max-width: 1024px) {
-//   .products {
-//     h2 {
-//       margin: 15px 0;
-//     }
-
-//     .list_categories {
-//       grid-template-columns: repeat(3, 1fr);
-//     }
-
-//     .list .product {
-//       width: 100%;
-//       height: 400px;
-
-//       &:hover {
-//         animation: none !important;
-//       }
-
-//       .image {
-//         min-height: 280px;
-//       }
-
-//       .wrapper {
-//         .title {
-//           font-size: 13px;
-//           width: 150px;
-//         }
-
-//         .categoriesName {
-//           font-size: 11px;
-//         }
-
-//         .info {
-//           gap: 8px;
-//           margin-top: 20px;
-
-//           .prices .price {
-//             font-size: 18px;
-//           }
-
-//           .prices .oldPrice {
-//             font-size: 12px;
-//           }
-
-//           .purchases {
-//             font-size: 9px;
-//           }
-//         }
-
-//         svg {
-//           width: 20px;
-//           height: 20px;
-//         }
-//       }
-//     }
-//   }
-// }
-
-// @media (max-width: 768px) {
-//   .products {
-//     .list_categories {
-//       grid-template-columns: repeat(2, 1fr);
-//     }
-//   }
-// }
-
-// @media (max-width: 640px) {
-//   .products {
-//     .list_categories {
-//       grid-template-columns: repeat(2, 1fr);
-//       gap: 10px;
-//     }
-//     h2 {
-//       font-size: 20px;
-//       margin: 15px 0;
-//     }
-
-//     .list {
-//       flex-direction: column;
-//       align-items: center;
-//       padding: 5px;
-//     }
-
-//     .list .product {
-//       width: 100%;
-//       height: 400px;
-
-//       .image {
-//         min-height: 290px;
-//       }
-
-//       .wrapper .title {
-//         font-size: 15px;
-//         width: 180px;
-//       }
-//     }
-//   }
-// }
-
-// @media (max-width: 450px) {
-//   .products {
-//     h2 {
-//       font-size: 18px;
-//       margin: 5px 0;
-//     }
-
-//     .list_categories {
-//       grid-template-columns: repeat(2, 1fr);
-//     }
-
-//     .list .product {
-//       height: 370px;
-
-//       .image {
-//         min-height: 260px;
-//       }
-
-//       .wrapper .title {
-//         font-size: 13px;
-//         width: 160px;
-//       }
-//     }
-//   }
-// }
-
-// @media (max-width: 391px) {
-//   .products {
-//     grid-template-columns: repeat(2, 1fr);
-
-//     .list {
-//       padding: 2px;
-//     }
-
-//     .list .product .wrapper .title {
-//       width: 140px;
-//     }
-//   }
-// }

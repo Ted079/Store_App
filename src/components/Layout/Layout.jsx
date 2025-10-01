@@ -14,7 +14,7 @@ const Layout = () => {
   const categoriesList = useSelector((state) => state.categories.list);
   const dispatch = useDispatch();
   const location = useLocation();
-  const isMobile = useMediaQuery({ maxWidth: 640 });
+  const isMobile = useMediaQuery({ maxWidth: 768 });
 
   useEffect(() => {
     if (showSidebar) {

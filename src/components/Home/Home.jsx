@@ -8,6 +8,7 @@ import {
   filteredByPrice,
   filteredByCategory,
 } from "../../store/products/productsSlice";
+import Sidebar from "../Sidebar/Sidebar";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -29,10 +30,9 @@ const Home = () => {
       <Poster />
       <Products products={list} amount={10} title="Trending" />
       <Categoires categories={categoriesList} amount={5} title="Worth seeing" />
-      {/* <CaruselBanner /> */}
       <Products products={categoryFilter} amount={5} title="Furnitures" />
 
-      <Banner imageList={list} amount={5} />
+      <Banner imageList={list} amount={3} />
 
       <Products products={filtered} amount={5} title="Less than 30$" />
     </>

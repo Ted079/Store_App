@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./auth.module.scss";
+import styles from "./Auth.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 import LOGO from "../../images/logo.svg";
 import { ROUTES } from "../../utils/route";
@@ -40,12 +40,13 @@ function Signup() {
         initialErrorState={initiaErrorlValue}
         logo={LOGO}
         styles={styles}
+        title="Sign up to create an account"
         updateUserHandler={handleSignup}
         buttonText="Create an account"
         redirectLink={{
           path: ROUTES.LOGIN,
           text: "if you already have an account",
-          title: "Log in"
+          title: "Sign in"
         }}
       />
     </>

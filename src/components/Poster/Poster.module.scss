@@ -1,5 +1,4 @@
 .wrapper {
-  // overflow: hidden;
   max-width: 1270px;
   width: 100%;
   cursor: default;
@@ -37,7 +36,7 @@
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 8px;
-    background-color: var(--violet-dark);
+    background-color: var(--dark);
     cursor: context-menu;
 
     .title {
@@ -98,6 +97,7 @@
       height: 200px;
       max-width: 550px;
       width: 100%;
+      background-size:150%;
 
       .product {
         margin-top: 100px;

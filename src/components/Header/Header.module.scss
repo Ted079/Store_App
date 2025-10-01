@@ -31,6 +31,7 @@
           width: 30px;
           height: 30px;
           stroke: var(--grey);
+          fill: none;
         }
       }
     }
@@ -208,9 +209,13 @@
     .info {
       .wrapper {
         margin-left: 0;
+        .category {
+          display: none;
+        }
       }
 
       .account {
+        display: none;
         column-gap: 10px;
 
         .favourites {
@@ -230,22 +235,6 @@
 
     .logo {
       width: 100px;
-    }
-
-    .info {
-      .wrapper {
-        .category {
-          display: none;
-          svg {
-            width: 30px;
-            height: 30px;
-          }
-        }
-      }
-
-      .account {
-        display: none;
-      }
     }
   }
 }

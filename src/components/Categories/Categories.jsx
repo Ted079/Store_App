@@ -24,7 +24,7 @@ const Categories = ({ title, amount, categories = [] }) => {
             slidesPerView: 2,
             spaceBetween: 10,
           },
-          640: {
+          600: {
             slidesPerView: 3,
             spaceBetween: 10,
           },
@@ -34,19 +34,15 @@ const Categories = ({ title, amount, categories = [] }) => {
           },
           1024: {
             slidesPerView: 4,
-            spaceBetween: 40,
+            spaceBetween: 20,
           },
         }}
         modules={[Navigation]}
         navigation={true}
-        // navigation={{
-        //   prevEl : `${styles.prevBtn}`
-        //   nextEl : `${styles.nextBtn}`
-        // }}
       >
         {list.map(({ name, id, image }) => (
-          <SwiperSlide className={styles.item}>
-            <Link to={`/categories/${id}`} key={id}>
+          <SwiperSlide className={styles.item} key={id}>
+            <Link to={`/categories/${id}`} >
               <div
                 className={styles.image}
                 style={{ backgroundImage: `url(${image})` }}

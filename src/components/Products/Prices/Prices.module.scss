@@ -1,0 +1,16 @@
+.prices {
+  gap: 5px;
+  display: flex;
+  .price {
+    color: var(--violet-dark);
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .oldPrice {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 16px;
+    color: var(--dark-sea);
+    text-decoration: line-through;
+  }
+}

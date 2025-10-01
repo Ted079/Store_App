@@ -2,7 +2,6 @@
   max-width: 1300px;
   width: 100%;
   margin: 0 auto;
-  // background-color: var(--bg);
 
   .wrapper {
     display: flex;
@@ -53,12 +52,12 @@
           padding: 10px;
           border-radius: 4px;
           transition: border 0.3s;
-          border: 2px solid var(--dark-sea);
+          border: 1px solid var(--dark-sea);
           &:hover {
-            border: 2px solid var(--white);
+            border: 1px solid var(--white);
           }
           &:focus {
-            border: 2px solid var(--white);
+            border: 1px solid var(--white);
             outline: none;
           }
         }
@@ -82,6 +81,7 @@
         button {
           width: 100%;
           font-weight: 400;
+          height: 48px;
         }
       }
     }

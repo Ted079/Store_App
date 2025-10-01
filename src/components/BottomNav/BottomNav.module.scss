@@ -20,7 +20,7 @@
       align-items: center;
       justify-content: center;
       position: relative;
-      width: 50px; 
+      width: 50px;
       height: 40px;
       cursor: pointer;
 
@@ -62,7 +62,7 @@
       svg {
         width: 25px;
         fill: var(--grey);
-      
+        stroke-width: 1.5px;
 
         &:hover {
           fill: var(--white);
@@ -143,37 +143,6 @@
           stroke: white;
         }
       }
-
-      //   .userSvg {
-      //     width: 24px;
-      //     height: 24px;
-      //     stroke-width: 2px;
-      //     position: relative;
-      //     left: 4px;
-      //     stroke: var(--grey);
-      //     &:hover {
-      //       stroke: var(--white);
-      //     }
-
-      //     &.active {
-      //       stroke: var(--white);
-      //     }
-      //   }
-
-      //   .userSvgActive {
-      //     stroke: var(--white);
-      //     width: 24px;
-      //     height: 24px;
-      //     stroke-width: 2px;
-      //   }
-
-      //   .usernameActive {
-      //     color: var(--white);
-      //     font-size: 10px;
-      //     line-height: 12px;
-      //   }
     }
   }
 }
-
-

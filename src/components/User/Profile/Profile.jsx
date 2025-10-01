@@ -1,19 +1,18 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { logOutUser } from "../../store/user/userSlice";
+import { logOutUser } from "../../../store/user/userSlice";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Profile.module.scss";
-import Sidebar from "../Sidebar/Sidebar";
-import Products from "../Products/Products";
-import { formatDate } from "../../utils/common";
-import { listForProfile, profileActions } from "../../utils/constants";
-import Preloader from "../Preloader/Preloader";
+import Sidebar from "../../Sidebar/Sidebar";
+import { formatDate } from "../../../utils/common";
+import { listForProfile, profileActions } from "../../../utils/constants";
+import Preloader from "../../Preloader/Preloader";
+import Favorites from "../../Favorites/Favorites";
 
 function Profile() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const favorite = useSelector((state) => state.user.favorite);
 
   const { currentUser, isLoading } = useSelector(({ user }) => user);
 
@@ -31,10 +30,9 @@ function Profile() {
     <Preloader />
   ) : (
     <>
-      <Sidebar title="PROFILE" list={listForProfile} />
-
-      <section className={styles.container}>
-        <div className={styles.wrapper}>
+      <div className={styles.container}>
+        <Sidebar title="PROFILE" list={listForProfile} />
+        <section className={styles.wrapper}>
           <div className={styles.user}>
             <div className={styles.left}>
               <div className={styles.profileInfo}>
@@ -83,7 +81,7 @@ function Profile() {
               </Link>
             ))}
 
-            <button
+            <div
               className={styles.logOutBtn}
               onClick={() => {
                 dispatch(logOutUser());
@@ -98,23 +96,12 @@ function Profile() {
               </svg>
 
               <span>Log out</span>
-            </button>
-          </div>
-        </div>
-      </section>
-      {favorite.length ? (
-        <Products products={favorite} amount={50} title="Favorite goods" />
-      ) : (
-        <section className={styles.empty}>
-          <div className={styles.redirect}>
-            <h2>Your favorites are still empty</h2>
-            <h3>
-              Add products using the ❤️ icon so you don't lose them and can buy
-              them later.
-            </h3>
+            </div>
           </div>
         </section>
-      )}
+      </div>
+
+      <Favorites />
     </>
   );
 }

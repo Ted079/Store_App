@@ -1,0 +1,46 @@
+.quentity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  cursor: pointer;
+  margin-left: 10px;
+  .btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    &:hover {
+      opacity: 0.8;
+    }
+    svg {
+      width: 20px;
+      height: 20px;
+      position: relative;
+      top: 5px;
+      left: 5px;
+    }
+  }
+  .minus {
+    @extend .btn;
+    fill: var(--grey);
+    background-color: var(--sea);
+  }
+  span {
+    font-weight: 500;
+    color: var(--dark-sea);
+  }
+  .plus {
+    @extend .btn;
+    fill: var(--white);
+    background-color: var(--violet-dark);
+  }
+}
+
+@media (max-width: 768px) {
+  .quentity {
+    // gap: 8px;
+    position: relative;
+    right: 6px;
+  }
+}
+

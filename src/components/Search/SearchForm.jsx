@@ -98,6 +98,7 @@ function SearchForm() {
             <p>Worth seeing</p>
             {data.slice(4, 7).map(({ images, id, title }) => (
               <Items
+                key={id}
                 onClick={closeSearchModal}
                 images={images}
                 id={id}

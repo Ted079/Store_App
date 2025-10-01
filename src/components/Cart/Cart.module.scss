@@ -2,35 +2,9 @@
   max-width: 1300px;
   width: 100%;
 
-  .empty {
-    .redirect {
-      margin-top: 60px;
-      text-align: center;
-
-      h2 {
-        font-weight: 500;
-        color: var(--grey);
-      }
-
-      button {
-        width: 320px;
-        font-size: 18px;
-        margin: 20px;
-      }
-      > span {
-        display: block;
-        height: 1px;
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.1);
-        margin: 20px 0 10px;
-      }
-    }
-  }
-
   .wrapper {
     display: flex;
-    justify-content: space-between;
-    gap: 30px;
+    gap: 15px;
     background-color: var(--bg);
 
     .title {
@@ -50,17 +24,10 @@
           padding: 10px;
           margin-bottom: 20px;
           border-radius: 5px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-
-          .mobile {
-            display: none;
-          }
 
           .link {
             display: flex;
-            max-width: 400px;
+            max-width: 550px;
             width: 100%;
             align-items: center;
             .image {
@@ -83,27 +50,41 @@
                 font-size: 13px;
                 font-weight: 500;
                 color: var(--grey);
+                &:hover {
+                  color: var(--dark-sea);
+                }
+              }
+
+              .total {
+                display: none;
               }
             }
           }
 
-          .price {
-            font-size: 20px;
-            font-weight: 500;
-            margin-left: 10px;
-          }
-
-          .quentity {
+          .other-side {
+            width: 100%;
             display: flex;
+            justify-content: space-around;
             align-items: center;
-            justify-content: center;
-            gap: 15px;
-            cursor: pointer;
-            margin-left: 10px;
-            .btn {
+            .price {
+              display: none;
+              font-size: 20px;
+              font-weight: 500;
+              margin-left: 10px;
+            }
+
+            .total {
+              margin-left: 10px;
+              font-weight: 700;
+              font-size: 25px;
+            }
+
+            .close {
               width: 30px;
               height: 30px;
+              background-color: var(--grey);
               border-radius: 5px;
+              fill: var(--grey);
               &:hover {
                 opacity: 0.8;
               }
@@ -113,50 +94,12 @@
                 position: relative;
                 top: 5px;
                 left: 5px;
-              }
-            }
-            .minus {
-              @extend .btn;
-              fill: var(--grey);
-              background-color: var(--sea);
-            }
-            span {
-              font-weight: 500;
-              color: var(--dark-sea);
-            }
-            .plus {
-              @extend .btn;
-              fill: var(--white);
-              background-color: var(--violet-dark);
-            }
-          }
-
-          .total {
-            margin-left: 10px;
-            font-weight: 700;
-            font-size: 25px;
-          }
-
-          .close {
-            width: 30px;
-            height: 30px;
-            background-color: var(--grey);
-            border-radius: 5px;
-            fill: var(--grey);
-            &:hover {
-              opacity: 0.8;
-            }
-            svg {
-              width: 20px;
-              height: 20px;
-              position: relative;
-              top: 5px;
-              left: 5px;
-              .icon {
-                width: 32px;
-                height: 32px;
-                fill: var(--grey);
-                stroke: var(--grey);
+                .icon {
+                  width: 32px;
+                  height: 32px;
+                  fill: var(--grey);
+                  stroke: var(--grey);
+                }
               }
             }
           }
@@ -180,7 +123,6 @@
       }
 
       .items {
-        // @extend .totalDivs;
         font-size: 14px;
         color: var(--grey);
         font-weight: 500;
@@ -207,6 +149,7 @@
 
       .proceed {
         height: 50px;
+        border-radius: 20px;
       }
     }
   }
@@ -234,7 +177,6 @@
       .totalWindow {
         width: 100%;
         height: auto;
-        // padding: 20px;
 
         .subtotal {
           font-size: 18px;
@@ -251,37 +193,38 @@
       .cart {
         .list {
           .item {
-            gap: 15px;
-
-            .price,
-            .total,
-            .quentity,
-            .close {
-              margin-left: 0;
-            }
-
             .link {
-              width: 280px;
+              width: 900px;
+
               .image {
-                width: 220px;
-                margin-right: 10px;
+                margin-right: 15px;
               }
               .info {
                 .name {
                   font-size: 14px;
+                  line-height: 20px;
                   font-weight: 500;
                 }
                 .category {
-                  font-size: 12px;
+                  // font-size: 12px;
+                }
+
+                .total {
+                  display: flex;
+                  font-weight: 700;
+                  font-size: 18px;
+                  margin-bottom: 8px;
+                  color: var(--violet-dark);
                 }
               }
             }
-            .quentity {
-              gap: 8px;
-            }
 
-            .total {
-              font-size: 20px;
+            .other-side {
+              justify-content: space-around;
+
+              .total {
+                display: none;
+              }
             }
           }
         }
@@ -292,93 +235,27 @@
 
 @media (max-width: 600px) {
   .container {
-    .empty {
-      .redirect {
-        h2 {
-          font-size: 16px;
-          margin: 0 15px;
-        }
-
-        button {
-          width: 300px;
-          font-size: 16px;
-          margin: 20px;
-        }
-      }
-    }
-
     .wrapper {
       .cart {
         .list {
           .item {
             flex-direction: column;
-            // align-items: flex-start;
-
-            .price,
-            .total,
-            .quentity,
-            .close {
-              margin-left: 10px;
-            }
 
             .link {
-              flex-direction: column;
-              // align-items: flex-start;
+              width: 100%;
 
               .image {
-                margin-right: 0;
-                margin-bottom: 10px;
-                width: 250px;
-                height: 150px;
-              }
-              .info {
-                .name {
-                  font-size: 14px;
-                  font-weight: 600;
-                }
-                .category {
-                  font-size: 14px;
-                }
-              }
-            }
-            .price {
-              font-weight: 600;
-              &::before {
-                content: "Price: ";
-                color: var(--grey);
-                font-weight: 500;
+                width: 106px;
+                height: 110px;
               }
             }
 
-            .quentity {
-              gap: 15px;
-              cursor: pointer;
-              font-size: 22px;
-              .btn {
-                width: 40px;
-                height: 40px;
+            .other-side {
+              margin-top: 15px;
+              justify-content: space-between;
 
-                svg {
-                  width: 30px;
-                  height: 30px;
-                }
-              }
-            }
-
-            .total {
-              margin-top: 10px;
-              font-size: 23px;
-              &::before {
-                content: "Total: ";
-                color: var(--grey);
-                font-weight: 500;
-              }
-            }
-
-            .close {
-              svg {
-                width: 25px;
-                height: 25px;
+              .close {
+                margin-right: 10px;
               }
             }
           }
@@ -386,25 +263,4 @@
       }
     }
   }
-}
-
-@media (max-width: 480px) {
-  .container {
-    .empty {
-      .redirect {
-        h2 {
-          font-size: 14px;
-        }
-        button {
-          width: 250px;
-          font-size: 14px;
-          margin: 20px;
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 370px) {
-  // Large desktop
 }

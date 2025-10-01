@@ -7,6 +7,7 @@ import {
   removeItemToFavorite,
 } from "../../store/user/userSlice";
 import { toast } from "react-toastify";
+import Prices from "./Prices/Prices";
 
 const ProductsCard = (product) => {
   const {
@@ -47,10 +48,8 @@ const ProductsCard = (product) => {
         <h3 className={styles.title}>{title}</h3>
         <div className={styles.categoriesName}>{categoryName}</div>
         <div className={styles.info}>
-          <div className={styles.prices}>
-            <div className={styles.price}>{price}$</div>
-            <div className={styles.oldPrice}>{Math.floor(price * 0.7)}$</div>
-          </div>
+         
+          <Prices price={price} />
 
           <div className={styles.purchases}>
             {Math.floor(Math.random() * 20 + 1)} people purchased
