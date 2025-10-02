@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet, useLocation } from "react-router-dom";
 import Header from "../Header/Header";
@@ -30,7 +30,7 @@ const Layout = () => {
     if (showSidebar) {
       dispatch(toggleForm(false));
     }
-  }, [location.pathname]);
+  }, [showSidebar, dispatch, location.pathname]);
   return (
     <>
       <Header />

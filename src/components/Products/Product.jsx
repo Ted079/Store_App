@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./Product.module.scss";
 import { ROUTES } from "../../utils/route";
 import { Link, useNavigate } from "react-router-dom";

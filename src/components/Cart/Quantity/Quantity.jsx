@@ -1,7 +1,6 @@
-import React from "react";
 import styles from "./Quantity.module.scss";
 
-function Quantity({quantity, changeQuantity, item}) {
+function Quantity({ quantity, changeQuantity, item }) {
   return (
     <div className={styles.quentity}>
       <div

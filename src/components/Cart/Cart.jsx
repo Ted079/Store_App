@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import styles from "./Cart.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import Products from "../Products/Products";

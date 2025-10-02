@@ -23,19 +23,19 @@ const AppRoutes = () => {
         <Route element={<Layout />}>
           <Route index element={<Home />} />
           <Route path={ROUTES.PRODUCT} element={<SingleProduct />} />
-          <Route path={ROUTES.PROFILE} element={<Profile />} >
-           <Route path="favorite" element={<Favorites/>} /> 
+          <Route path={ROUTES.PROFILE} element={<Profile />}>
+            <Route path="favorite" element={<Favorites />} />
           </Route>
           <Route path={ROUTES.SETTINGS} element={<UpdateUserData />} />
           <Route path={ROUTES.CATEGORY} element={<SingleCategory />} />
 
           <Route path={ROUTES.CART} element={<Cart />} />
           <Route path={ROUTES.CREATE} element={<CreareProduct />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
 
         <Route path={ROUTES.SIGNUP} element={<Signup />} />
         <Route path={ROUTES.LOGIN} element={<Login />} />
-        <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
   );

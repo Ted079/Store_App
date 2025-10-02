@@ -1,4 +1,4 @@
-import React, { useEffect} from "react";
+import { useEffect} from "react";
 import Poster from "../Poster/Poster";
 import Products from "../Products/Products";
 import Categoires from "../Categories/Categories";
@@ -15,6 +15,7 @@ const Home = () => {
   const { list, filtered, categoryFilter } = useSelector(
     ({ products }) => products
   );
+
   const categoriesList = useSelector((state) => state.categories.list);
 
   useEffect(() => {

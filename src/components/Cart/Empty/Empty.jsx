@@ -1,10 +1,8 @@
-import React from "react";
 import Products from "../../Products/Products";
 import styles from "./Empty.module.scss";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../../utils/route";
 import { useSelector } from "react-redux";
-// import { relatedCartProducts } from "../../../store/user/userSlice";
 
 function Empty() {
   const productsList = useSelector((state) => state.products.list);

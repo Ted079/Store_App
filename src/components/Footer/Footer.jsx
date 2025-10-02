@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./Footer.module.scss";
 import LOGO from "../../images/logo.svg";
 import { Link } from "react-router-dom";
@@ -24,12 +23,12 @@ const Footer = () => {
             <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#youtube`} />
           </svg>
         </a>
-        <a target="_blank" rel="noreferrer" href="">
+        <a target="_blank" rel="noreferrer" href="/">
           <svg className={styles["icon-fav"]}>
             <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#facebook`} />
           </svg>
         </a>
-        <a target="_blank" rel="noreferrer" href="">
+        <a target="_blank" rel="noreferrer" href="/">
           <svg className={styles["icon-fav"]}>
             <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#instagram`} />
           </svg>

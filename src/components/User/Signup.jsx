@@ -1,17 +1,14 @@
 import styles from "./auth.module.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import LOGO from "../../images/logo.svg";
 import { ROUTES } from "../../utils/route";
 import { useDispatch } from "react-redux";
-import { checkEmail, createUser } from "../../store/user/userSlice";
+import { createUser } from "../../store/user/userSlice";
 import UserForm from "./UserForm";
-import { useCreateUserApiMutation } from "../../store/api/auth.api";
 
 function Signup() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const [mutateNewUser] = useCreateUserApiMutation();
 
   const initialValue = {
     name: "",
@@ -20,14 +17,13 @@ function Signup() {
     avatar: "https://picsum.photos/800",
   };
 
-   const initiaErrorlValue = {
+  const initiaErrorlValue = {
     name: "",
     email: "",
     password: "",
   };
 
   const handleSignup = (values) => {
-    // mutateNewUser(values);
     dispatch(createUser(values));
     navigate("/");
   };
@@ -45,7 +41,7 @@ function Signup() {
         redirectLink={{
           path: ROUTES.LOGIN,
           text: "if you already have an account",
-          title: "Log in"
+          title: "Log in",
         }}
       />
     </>

@@ -92,7 +92,6 @@ export const checkEmail = createAsyncThunk(
   }
 );
 
-const addCurrentUser = () => {};
 
 const userSlice = createSlice({
   name: "user",
@@ -109,7 +108,6 @@ const userSlice = createSlice({
 
   reducers: {
     logOutUser: (state) => {
-      const userId = state.currentUser?.id;
       state.currentUser = null;
       state.loginErr = null;
 

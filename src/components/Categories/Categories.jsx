@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./Categories.module.scss";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";

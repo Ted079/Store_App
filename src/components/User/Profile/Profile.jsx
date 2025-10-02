@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logOutUser } from "../../../store/user/userSlice";
 import { Link, useNavigate } from "react-router-dom";
@@ -20,7 +20,7 @@ function Profile() {
 
   useEffect(() => {
     if (!isLoading && !currentUser) navigate("/login");
-  }, [currentUser, isLoading]);
+  }, [currentUser, isLoading, navigate]);
 
   if (isLoading) {
     return <Preloader />;

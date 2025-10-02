@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./Prices.module.scss";
 
 function Prices({ price, className }) {

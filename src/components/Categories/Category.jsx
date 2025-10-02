@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useGetProductWithFilterQuery } from "../../store/api/apiSlice";
 import styles from "./Category.module.scss";
@@ -10,18 +10,24 @@ function Category() {
   const { id } = useParams();
   const { list } = useSelector(({ categories }) => categories);
 
-  const defaultValues = {
-    title: "",
-    price_min: 0,
-    price_max: 0,
-  };
+  const defaultValues = useMemo(
+    () => ({
+      title: "",
+      price_min: 0,
+      price_max: 0,
+    }),
+    []
+  );
 
-  const defaultParams = {
-    categoryId: id,
-    limit: 10,
-    offset: 0,
-    ...defaultValues,
-  };
+  const defaultParams = useMemo(
+    () => ({
+      categoryId: id,
+      limit: 10,
+      offset: 0,
+      ...defaultValues,
+    }),
+    [id, defaultValues]
+  );
 
   const [items, setItems] = useState([]);
   const [categories, setCatories] = useState(null);
@@ -42,7 +48,7 @@ function Category() {
     setItems([]);
     setEnd(true);
     setParams({ ...defaultParams, categoryId: id });
-  }, [id]);
+  }, [id, defaultParams, defaultValues]);
 
   useEffect(() => {
     if (!id || !list.length) return;

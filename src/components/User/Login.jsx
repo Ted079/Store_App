@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import LOGO from "../../images/logo.svg";
 import styles from "./auth.module.scss";
 import { ROUTES } from "../../utils/route";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../store/user/userSlice";
 import UserForm from "./UserForm";
@@ -12,8 +12,6 @@ function Login() {
   const { currentUser, loginErr } = useSelector(({ user }) => user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-
 
   useEffect(() => {
     if (currentUser) {

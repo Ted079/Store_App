@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./BottomNav.module.scss";
 import { NavLink } from "react-router-dom";
 import { ROUTES } from "../../utils/route";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleForm } from "../../store/user/userSlice";
-import UseClickOutside from "../../hooks/UseClickOutside";
 
 const BottomNav = () => {
   const { currentUser, cart, favorite, showSidebar } = useSelector(
@@ -17,20 +16,11 @@ const BottomNav = () => {
     setValues(currentUser);
   }, [currentUser]);
 
-  const [profileMenu, setProfileMenu] = useState(false);
   const dispatch = useDispatch();
 
   const toggleClickSideBar = () => {
     dispatch(toggleForm(!showSidebar));
   };
-
-  const closeMenuHandler = () => {
-    setProfileMenu(false);
-  };
-
-  UseClickOutside(() => {
-    closeMenuHandler();
-  }, []);
 
   return (
     <div className={styles.BottomNav}>

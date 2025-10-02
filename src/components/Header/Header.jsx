@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./Header.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { ROUTES } from "../../utils/route";
@@ -20,7 +20,6 @@ const Header = () => {
   const navigate = useNavigate();
   const ref = useRef(null);
 
-  const value = Object.entries(values);
 
   const toggleClickHandler = () => {
     setProfileMenu((previous) => !previous);

@@ -1,0 +1,49 @@
+.empty {
+  max-width: 1275px;
+  width: 100%;
+  margin: 90px;
+  padding: 90px;
+  .redirect {
+    padding: 50px;
+    text-align: center;
+
+    h2,
+    h3 {
+      font-weight: 700;
+      font-size: 72px;
+      color: var(--generic);
+      text-align: center;
+    }
+
+    h3 {
+      margin-top: 50px;
+      font-size: 44px;
+      line-height: 60px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .empty {
+    width: 100%;
+    width: 100%;
+    margin: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .empty {
+    padding: 10px;
+
+    .redirect {
+      h2 {
+        font-size: 50px;
+        margin-bottom: 10px;
+      }
+
+      h3 {
+        font-size: 30px;
+      }
+    }
+  }
+}

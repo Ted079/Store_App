@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import styles from "./SearchForm.module.scss";
 import { UseEscapeKey } from "../../hooks/UseEscapeKey";
 import { useGetProductWithFilterQuery } from "../../store/api/apiSlice";

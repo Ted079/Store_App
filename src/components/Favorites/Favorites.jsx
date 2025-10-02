@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styles from "./Favorites.module.scss";
@@ -14,7 +14,7 @@ function Favorites() {
 
   useEffect(() => {
     if (!isLoading && !currentUser) navigate("/login");
-  }, [currentUser, isLoading]);
+  }, [currentUser, isLoading, navigate]);
 
   if (isLoading) {
     return <Preloader />;

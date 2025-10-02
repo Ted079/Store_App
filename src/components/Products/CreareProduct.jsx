@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createProduct } from "../../store/products/productsSlice";
 import styles from "./CreateProduct.module.scss";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const CreareProduct = () => {
   const { currentUser, isLoading } = useSelector(({ user }) => user);
-  const naviagte = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [values, setValues] = useState({
     title: "",
@@ -18,8 +17,8 @@ const CreareProduct = () => {
   });
 
   useEffect(() => {
-    if (!currentUser && !isLoading) naviagte("/login");
-  }, [currentUser]);
+    if (!currentUser && !isLoading) navigate("/login");
+  }, [currentUser, isLoading, navigate]);
 
   const handleChange = ({ target: { name, value } }) => {
     let newValues = value;
@@ -34,14 +33,7 @@ const CreareProduct = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // const isEmpty = Object.keys(values).some((value) => value === "");
-    // if (isEmpty) {
-    //   toast.error("Complete all field", {
-    //     position: "bottom-left",
-    //     theme: "dark",
-    //   });
-    //   return;
-    // }
+
     dispatch(createProduct(values));
     setValues({
       title: "",
