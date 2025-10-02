@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Header from "../Header/Header";
 import BottomNav from "../BottomNav/BottomNav";
 import SidebarForm from "../Sidebar/SidebarForm";
@@ -15,7 +15,6 @@ const Layout = () => {
   const { list } = useSelector(({ products }) => products);
   const categoriesList = useSelector((state) => state.categories.list);
   const dispatch = useDispatch();
-  const location = useLocation();
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   useEffect(() => {
@@ -27,10 +26,8 @@ const Layout = () => {
   }, [showSidebar]);
 
   useEffect(() => {
-    if (showSidebar) {
-      dispatch(toggleForm(false));
-    }
-  }, [showSidebar, dispatch, location.pathname]);
+    dispatch(toggleForm(false));
+  }, [dispatch]);
   return (
     <>
       <Header />
