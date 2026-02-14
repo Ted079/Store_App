@@ -2,7 +2,7 @@
 Frontend e-commerce clone built with React and Redux Toolkit.
 Uses fake products from Platzi Fake Store API.
 
-🌐 Live demo (hosted on Netlify):
+Live demo (hosted on Netlify):
 https://storeapp222.netlify.app/
 
 Features:
